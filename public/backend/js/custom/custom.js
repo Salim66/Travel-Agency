@@ -28,5 +28,13 @@
 
         });
 
+
+        // Category Image Preview
+        $('#categroy_image_load').change(function(e){
+            e.preventDefault();
+            let imageURL = URL.createObjectURL(e.target.files[0]);
+            $('.category_image_preview').attr('src', imageURL);
+        });
+
     });
 })(jQuery);

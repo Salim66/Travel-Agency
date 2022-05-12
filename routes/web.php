@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\LanguageController;
 use App\Http\Controllers\Frontend\SettingsController;
@@ -65,6 +66,15 @@ Route::middleware([
         Route::get('/list', [SocialLinkController::class, 'index'])->name('social.link');
         Route::get('/edit/{id}', [SocialLinkController::class, 'edit'])->name('social-link.edit');
         Route::put('/update/{id}', [SocialLinkController::class, 'update'])->name('social-link.update');
+    });
+
+    // Category Routes
+    Route::prefix('categories')->group(function () {
+        Route::get('/list', [CategoryController::class, 'list'])->name('category.list');
+        Route::post('/store', [CategoryController::class, 'store'])->name('category.store');
+        Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+        Route::put('/update/{id}', [CategoryController::class, 'update'])->name('category.update');
+        Route::get('/delete/{id}', [CategoryController::class, 'delete'])->name('category.delete');
     });
 
 
