@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ContactInfoController;
 use App\Http\Controllers\Frontend\LanguageController;
 use App\Http\Controllers\Frontend\SettingsController;
+use App\Http\Controllers\Backend\ContactInfoController;
+use App\Http\Controllers\Backend\ContactUsFomrController;
+use App\Http\Controllers\Backend\SocialLinkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,5 +53,19 @@ Route::middleware([
         Route::get('/edit/{id}', [ContactInfoController::class, 'edit'])->name('contact-info.edit');
         Route::put('/update/{id}', [ContactInfoController::class, 'update'])->name('contact-info.update');
     });
+
+    // All Contacts Form Routes
+    Route::prefix('contacts')->group(function () {
+        Route::get('/list', [ContactUsFomrController::class, 'contactList'])->name('all.contact.us');
+        Route::get('/delete/{id}', [ContactUsFomrController::class, 'contactDelete'])->name('contact-us.delete');
+    });
+
+    // Socail Link Routes
+    Route::prefix('socials')->group(function () {
+        Route::get('/list', [SocialLinkController::class, 'index'])->name('social.link');
+        Route::get('/edit/{id}', [SocialLinkController::class, 'edit'])->name('social-link.edit');
+        Route::put('/update/{id}', [SocialLinkController::class, 'update'])->name('social-link.update');
+    });
+
 
 });

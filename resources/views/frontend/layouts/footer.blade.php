@@ -8,23 +8,27 @@
                 <div class="col-lg-4">
                     <div class="footer-about text-lg-start text-center">
                         <p>Duis rutrum nisl urna. Maecenas vel libero faucibus nisi venenatis hendrerit a id lectus. Suspendissendt molestie turpis nec lacinia vehicula.</p>
+
+                        @php
+                            $social = \App\Models\SocialLink::findOrFail(1);
+                        @endphp
                         <div class="footer-social-wrap">
                             <h5>Follow Us On:</h5>
                             <ul class="footer-social-links justify-content-lg-start justify-content-center">
                                 <li>
-                                    <a href="#"><i class="bx bxl-instagram"></i></a>
+                                    <a href="{{ $social->instagram }}"><i class="bx bxl-instagram"></i></a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="bx bxl-facebook"></i></a>
+                                    <a href="{{ $social->facebook }}"><i class="bx bxl-facebook"></i></a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="bx bxl-twitter"></i></a>
+                                    <a href="{{ $social->twitter }}"><i class="bx bxl-twitter"></i></a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="bx bxl-whatsapp"></i></a>
+                                    <a href="{{ $social->whatsapp }}"><i class="bx bxl-whatsapp"></i></a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="bx bxl-pinterest-alt"></i></a>
+                                    <a href="{{ $social->pintarest }}"><i class="bx bxl-pinterest-alt"></i></a>
                                 </li>
                             </ul>
                         </div>

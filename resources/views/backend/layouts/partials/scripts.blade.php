@@ -33,3 +33,6 @@
     }
     @endif
 </script>
+
+<script src="{{ asset('backend/js/sweetalert2@11.js') }}"></script>
+<script src="{{ asset('backend') }}/js/custom/custom.js"></script>

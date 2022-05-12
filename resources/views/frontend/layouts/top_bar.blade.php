@@ -22,22 +22,27 @@
                     {{-- <a href="#"></a> --}}
                 </div>
             </div>
+
+            @php
+                $social = \App\Models\SocialLink::findOrFail(1);
+            @endphp
+
             <div class="col-xl-3 col-lg-6 col-md-6 d-md-flex d-none align-items-center justify-content-end">
                 <ul class="topbar-social-links">
                     <li>
-                        <a href="#"><i class="bx bxl-facebook"></i></a>
+                        <a href="{{ $social->facebook }}"><i class="bx bxl-facebook"></i></a>
                     </li>
                     <li>
-                        <a href="#"><i class="bx bxl-instagram-alt"></i></a>
+                        <a href="{{ $social->instagram }}"><i class="bx bxl-instagram-alt"></i></a>
                     </li>
                     <li>
-                        <a href="#"><i class="bx bxl-twitter"></i></a>
+                        <a href="{{ $social->twitter }}"><i class="bx bxl-twitter"></i></a>
                     </li>
                     <li>
-                        <a href="#"><i class="bx bxl-whatsapp-square"></i></a>
+                        <a href="{{ $social->whatsapp }}"><i class="bx bxl-whatsapp-square"></i></a>
                     </li>
                     <li>
-                        <a href="#"><i class="bx bxl-pinterest"></i></a>
+                        <a href="{{ $social->pintarest }}"><i class="bx bxl-pinterest"></i></a>
                     </li>
                 </ul>
             </div>
