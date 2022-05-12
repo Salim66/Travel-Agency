@@ -9,6 +9,10 @@
 <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/swiper-bundle.min.css" />
 
 <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+<!-- Toastr CSS -->
+<link rel="stylesheet" href="{{ asset('frontend/assets/css/toastr.min.css') }}">
 
 <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/animate.min.css" />
 

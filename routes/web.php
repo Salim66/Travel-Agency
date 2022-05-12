@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactInfoController;
+use App\Http\Controllers\Frontend\LanguageController;
+use App\Http\Controllers\Frontend\SettingsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +16,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+////////////// Frontend Routes //////////////
 Route::get('/', function () {
     return view('frontend.home');
 });
+// Pages Routes
+Route::get('/contact-us', [SettingsController::class, 'contactUs'])->name('contact-us');
 
+// Contact form submit Route
+Route::post('/contact-form-submit', [SettingsController::class, 'contactFormSubmit'])->name('contact.form.submit');
+
+// Language All Routes
+Route::get('/arabic/language', [LanguageController::class, 'arabic'])->name('arabic.language');
+Route::get('/english/language', [LanguageController::class, 'english'])->name('english.language');
+
+
+
+
+
+////////////// Backend Routes //////////////
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -26,5 +44,12 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('backend.dashboard');
     })->name('dashboard');
+
+    // Contact Info Routes
+    Route::prefix('contact-info')->group(function () {
+        Route::get('/list', [ContactInfoController::class, 'index'])->name('contact.info');
+        Route::get('/edit/{id}', [ContactInfoController::class, 'edit'])->name('contact-info.edit');
+        Route::put('/update/{id}', [ContactInfoController::class, 'update'])->name('contact-info.update');
+    });
 
 });

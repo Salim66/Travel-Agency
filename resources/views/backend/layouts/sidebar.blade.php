@@ -26,6 +26,21 @@
 
         <li class="treeview">
           <a href="#">
+            <i class="ti-settings"></i>
+            <span>Settings</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ route('contact.info') }}"><i class="ti-more"></i>Contact Info</a></li>
+            <li><a href="calendar.html"><i class="ti-more"></i>Calendar</a></li>
+          </ul>
+        </li>
+
+
+        <li class="treeview">
+          <a href="#">
             <i data-feather="message-circle"></i>
             <span>Application</span>
             <span class="pull-right-container">
