@@ -36,5 +36,12 @@
             $('.category_image_preview').attr('src', imageURL);
         });
 
+        // Banner Image Preview
+        $('#banner_image_load').change(function(e){
+            e.preventDefault();
+            let imageURL = URL.createObjectURL(e.target.files[0]);
+            $('.banner_image_preview').attr('src', imageURL);
+        });
+
     });
 })(jQuery);

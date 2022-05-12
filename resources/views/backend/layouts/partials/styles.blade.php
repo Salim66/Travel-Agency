@@ -8,5 +8,8 @@
 <!-- Toastr CSS -->
 <link rel="stylesheet" href="{{ asset('backend/css/toastr.min.css') }}">
 
+<!-- Custom CSS -->
+<link rel="stylesheet" href="{{ asset('backend') }}/css/custom/custom.css">
+
 <!-- JQUERY -->
 <script rel="text/javascript" src="{{ asset('backend/js/jquery.min.js') }}"></script>

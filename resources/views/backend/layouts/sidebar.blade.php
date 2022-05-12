@@ -48,6 +48,7 @@
           <ul class="treeview-menu">
             <li><a href="{{ route('contact.info') }}"><i class="ti-more"></i>Contact Info</a></li>
             <li><a href="{{ route('social.link') }}"><i class="ti-more"></i>Social Link</a></li>
+            <li><a href="{{ route('banner.list') }}"><i class="ti-more"></i>Hero Banner</a></li>
           </ul>
         </li>
 

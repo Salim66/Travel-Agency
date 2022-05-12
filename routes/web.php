@@ -6,6 +6,7 @@ use App\Http\Controllers\Frontend\LanguageController;
 use App\Http\Controllers\Frontend\SettingsController;
 use App\Http\Controllers\Backend\ContactInfoController;
 use App\Http\Controllers\Backend\ContactUsFomrController;
+use App\Http\Controllers\Backend\HeroSliderController;
 use App\Http\Controllers\Backend\SocialLinkController;
 
 /*
@@ -75,6 +76,15 @@ Route::middleware([
         Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
         Route::put('/update/{id}', [CategoryController::class, 'update'])->name('category.update');
         Route::get('/delete/{id}', [CategoryController::class, 'delete'])->name('category.delete');
+    });
+
+    // Hero Banner Routes
+    Route::prefix('hero')->group(function () {
+        Route::get('/list', [HeroSliderController::class, 'list'])->name('banner.list');
+        Route::post('/store', [HeroSliderController::class, 'store'])->name('banner.store');
+        Route::get('/edit/{id}', [HeroSliderController::class, 'edit'])->name('banner.edit');
+        Route::put('/update/{id}', [HeroSliderController::class, 'update'])->name('banner.update');
+        Route::get('/delete/{id}', [HeroSliderController::class, 'delete'])->name('banner.delete');
     });
 
 
