@@ -18,9 +18,24 @@
                                         // return $all_country;
                                     @endphp
                                     <div class="searchbox-input">
+                                        @if(session()->get('language') == 'arabic')
+                                        <label for="deatination_drop">وجهة</label>
+                                        <select data-placeholder="Where Are You Going?" id="deatination_drop">
+                                            <option selected>إلى أين تذهب؟</option>
+                                            @foreach($all_country as $country)
+                                            <optgroup label="{{ $country->country_name_ar }}">
+                                                @foreach($country->districts as $dis)
+                                                <option>
+                                                    {{ $dis->district_name_ar }}
+                                                </option>
+                                                @endforeach
+                                            </optgroup>
+                                            @endforeach
+                                        </select>
+                                        @else
                                         <label for="deatination_drop">Destination</label>
                                         <select data-placeholder="Where Are You Going?" id="deatination_drop">
-                                            <option value="">Where Are You Going?</option>
+                                            <option selected>Where Are You Going?</option>
                                             @foreach($all_country as $country)
                                             <optgroup label="{{ $country->country_name_en }}">
                                                 @foreach($country->districts as $dis)
@@ -31,6 +46,7 @@
                                             </optgroup>
                                             @endforeach
                                         </select>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -39,15 +55,27 @@
                                     <div class="searchbox-icon">
                                         <i class="bi bi-text-paragraph"></i>
                                     </div>
+                                    @php
+                                        $all_cat = \App\Models\Category::all();
+                                    @endphp
                                     <div class="searchbox-input">
+                                        @if(session()->get('language') == 'arabic')
+                                        <label for="activity-dropdown">نوع السفر</label>
+                                        <select class="defult-select-drowpown" data-placeholder="All Activity" id="activity-dropdown">
+                                            <option selected>كل نشاط</option>
+                                            @foreach($all_cat as $cat)
+                                            <option value="{{ $cat->id }}">{{ $cat->name_ar }}</option>
+                                            @endforeach
+                                        </select>
+                                        @else
                                         <label for="activity-dropdown">Travel Type</label>
                                         <select class="defult-select-drowpown" data-placeholder="All Activity" id="activity-dropdown">
-                                            <option value="">All Activity</option>
-                                            <option value="1">Type 1</option>
-                                            <option value="2">Type 2</option>
-                                            <option value="3">Type 3</option>
-                                            <option value="4">Type 4</option>
+                                            <option selected>All Activity</option>
+                                            @foreach($all_cat as $cat)
+                                            <option value="{{ $cat->id }}">{{ $cat->name_en }}</option>
+                                            @endforeach
                                         </select>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
