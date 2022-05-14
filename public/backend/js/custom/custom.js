@@ -43,5 +43,13 @@
             $('.banner_image_preview').attr('src', imageURL);
         });
 
+        // Package Image Preview
+        $('#package_image_load').change(function(e){
+            e.preventDefault();
+            let imageURL = URL.createObjectURL(e.target.files[0]);
+            $('.package_image_preview').attr('src', imageURL);
+        });
+
+
     });
 })(jQuery);

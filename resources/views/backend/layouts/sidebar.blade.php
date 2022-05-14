@@ -38,6 +38,33 @@
         </li>
 
         <li class="treeview">
+            <a href="#">
+              <i data-feather="map"></i>
+              <span>Country</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-right pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ route('country.list') }}"><i class="ti-more"></i>Country List</a></li>
+            </ul>
+        </li>
+
+        <li class="treeview">
+            <a href="#">
+              <i data-feather="package"></i>
+              <span>Packages</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-right pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ route('package.list') }}"><i class="ti-more"></i>All Packages</a></li>
+              <li><a href="{{ route('package.add') }}"><i class="ti-more"></i>Add Packages</a></li>
+            </ul>
+        </li>
+
+        <li class="treeview">
           <a href="#">
             <i class="ti-settings"></i>
             <span>Settings</span>

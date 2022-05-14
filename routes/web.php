@@ -6,7 +6,10 @@ use App\Http\Controllers\Frontend\LanguageController;
 use App\Http\Controllers\Frontend\SettingsController;
 use App\Http\Controllers\Backend\ContactInfoController;
 use App\Http\Controllers\Backend\ContactUsFomrController;
+use App\Http\Controllers\Backend\CountryController;
 use App\Http\Controllers\Backend\HeroSliderController;
+use App\Http\Controllers\Backend\LocationController;
+use App\Http\Controllers\Backend\PackageController;
 use App\Http\Controllers\Backend\SocialLinkController;
 
 /*
@@ -78,6 +81,15 @@ Route::middleware([
         Route::get('/delete/{id}', [CategoryController::class, 'delete'])->name('category.delete');
     });
 
+    // Category Routes
+    Route::prefix('countries')->group(function () {
+        Route::get('/list', [CountryController::class, 'list'])->name('country.list');
+        Route::post('/store', [CountryController::class, 'store'])->name('country.store');
+        Route::get('/edit/{id}', [CountryController::class, 'edit'])->name('country.edit');
+        Route::put('/update/{id}', [CountryController::class, 'update'])->name('country.update');
+        Route::get('/delete/{id}', [CountryController::class, 'delete'])->name('country.delete');
+    });
+
     // Hero Banner Routes
     Route::prefix('hero')->group(function () {
         Route::get('/list', [HeroSliderController::class, 'list'])->name('banner.list');
@@ -85,6 +97,16 @@ Route::middleware([
         Route::get('/edit/{id}', [HeroSliderController::class, 'edit'])->name('banner.edit');
         Route::put('/update/{id}', [HeroSliderController::class, 'update'])->name('banner.update');
         Route::get('/delete/{id}', [HeroSliderController::class, 'delete'])->name('banner.delete');
+    });
+
+    // Packages Routes
+    Route::prefix('packages')->group(function () {
+        Route::get('/list', [PackageController::class, 'list'])->name('package.list');
+        Route::get('/add', [PackageController::class, 'add'])->name('package.add');
+        Route::post('/store', [PackageController::class, 'store'])->name('package.store');
+        Route::get('/edit/{id}', [PackageController::class, 'edit'])->name('package.edit');
+        Route::put('/update/{id}', [PackageController::class, 'update'])->name('package.update');
+        Route::get('/delete/{id}', [PackageController::class, 'delete'])->name('package.delete');
     });
 
 
