@@ -5,7 +5,7 @@
 
     <body>
 
-        {{-- @include('frontend.layouts.pre_loader') --}}
+        @include('frontend.layouts.pre_loader')
 
         @include('frontend.layouts.search')
 

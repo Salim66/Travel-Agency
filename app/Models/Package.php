@@ -15,4 +15,13 @@ class Package extends Model
         return $this->belongsTo(Category::class, 'category_id');
     }
 
+    public function countries(){
+        return $this->belongsTo(Country::class, 'country_id');
+    }
+
+    public function districts(){
+        return $this->belongsTo(District::class, 'district_id');
+    }
+
+
 }

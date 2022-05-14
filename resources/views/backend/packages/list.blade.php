@@ -26,6 +26,7 @@
                                         <th>Package Title Arabic</th>
                                         <th>Package Amount</th>
                                         <th>Package Location</th>
+                                        <th>Package Duration</th>
                                         <th>Banner Image</th>
                                         <th>Action</th>
                                     </tr>
@@ -36,6 +37,9 @@
                                         <td>{{ $loop->index + 1 }}</td>
                                         <td>{{ $data->package_title_en }}</td>
                                         <td>{{ $data->package_title_ar }}</td>
+                                        <td>{{ $data->package_amount }}</td>
+                                        <td>{{ $data->districts->district_name_en }}, {{ $data->countries->country_name_en }}</td>
+                                        <td>{{ $data->package_duration }}</td>
                                         <td>
                                             <img src="{{ URL::to($data->package_image) }}" alt="">
                                         </td>

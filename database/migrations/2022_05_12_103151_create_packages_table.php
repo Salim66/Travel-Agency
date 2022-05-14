@@ -15,17 +15,19 @@ return new class extends Migration
     {
         Schema::create('packages', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('country_id');
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
+            $table->unsignedBigInteger('district_id');
+            $table->foreign('district_id')->references('id')->on('districts')->onDelete('cascade');
             $table->string('package_title_en');
             $table->string('package_title_ar');
             $table->string('package_duration');
             $table->string('package_amount');
             $table->string('package_group_size')->nullable();
             $table->string('package_tour_guide')->nullable();
-            $table->string('package_location_en');
-            $table->string('package_location_ar');
             $table->string('package_rating')->nullable();
             $table->longText('package_image');
             $table->longText('package_tour_gallery')->nullable();
@@ -46,8 +48,8 @@ return new class extends Migration
             $table->longText('package_travel_plan_detials_en')->nullable();
             $table->longText('package_travel_plan_detials_ar')->nullable();
             $table->longText('package_location_link')->nullable();
-            $table->boolean('package_holiday_offer')->default(0);
-            $table->boolean('status')->default(1);
+            $table->boolean('package_holiday_offer')->default(0)->nullable();
+            $table->boolean('status')->default(1)->nullable();
             $table->timestamps();
         });
     }

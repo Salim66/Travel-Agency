@@ -89,6 +89,7 @@ Route::middleware([
         Route::get('/edit/{id}', [CountryController::class, 'edit'])->name('country.edit');
         Route::put('/update/{id}', [CountryController::class, 'update'])->name('country.update');
         Route::get('/delete/{id}', [CountryController::class, 'delete'])->name('country.delete');
+        Route::get('/district/ajax/{country_id}', [CountryController::class, 'getDistrict']);
     });
 
     // District Routes

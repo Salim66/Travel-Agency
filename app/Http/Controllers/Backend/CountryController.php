@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Country;
+use App\Models\District;
 use Illuminate\Http\Request;
 
 class CountryController extends Controller
@@ -87,5 +88,13 @@ class CountryController extends Controller
 
         return redirect()->back()->with($notification);
 
+    }
+
+    /**
+     * Get District by Country
+     */
+    public function getDistrict($country_id){
+        $data = District::where('country_id', $country_id)->orderBy('district_name_en', 'ASC')->get();
+        return json_encode($data);
     }
 }

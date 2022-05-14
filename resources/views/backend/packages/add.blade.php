@@ -79,6 +79,43 @@
                                         </div>
                                     </div>
 
+                                    @php
+                                        $all_country = \App\Models\Country::all();
+                                    @endphp
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <h5>Select Country <span class="text-danger">*</span></h5>
+                                                <div class="controls">
+                                                    <select class="form-control select2" name="country_id" style="width: 100%;">
+                                                        <option selected="selected">--Select--</option>
+                                                        @foreach ($all_country as $country)
+                                                            <option value="{{ $country->id }}">{{ $country->country_name_en }} | {{ $country->country_name_ar }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('country_id')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <h5>Select District <span class="text-danger">*</span></h5>
+                                                <div class="controls">
+                                                    <select name="district_id" id="select" class="form-control">
+                                                        <option value="" selected disabled>Select District</option>
+
+                                                    </select>
+                                                    @error('district_id')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
@@ -104,31 +141,6 @@
                                                 <h5>Package Tour Guide <span class="text-danger"></span></h5>
                                                 <div class="controls">
                                                     <input type="text" name="package_tour_guide" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <h5>Package Location English <span class="text-danger">*</span></h5>
-                                                <div class="controls">
-                                                    <input type="text" name="package_location_en" class="form-control">
-                                                    @error('package_location_en')
-                                                        <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <h5>Package Location Arabic <span class="text-danger">*</span></h5>
-                                                <div class="controls">
-                                                    <input type="text" name="package_location_ar" class="form-control">
-                                                    @error('package_location_ar')
-                                                        <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
                                                 </div>
                                             </div>
                                         </div>
@@ -385,6 +397,52 @@
         <!-- /.content -->
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        // district find
+        $('select[name="country_id"]').on('change', function(){
+            var country_id = $(this).val();
+            if(country_id) {
+                $.ajax({
+                    url: "{{  url('/countries/district/ajax') }}/"+country_id,
+                    type:"GET",
+                    dataType:"json",
+                    success:function(data) {
+                        var d =$('select[name="district_id"]').empty();
+                            $.each(data, function(key, value){
+                                $('select[name="district_id"]').append('<option value="'+ value.id +'">' + value.district_name_en + '</option>');
+                            });
+                    },
+                });
+            } else {
+                alert('danger');
+            }
+        });
+
+        // sub sub category find
+        $('select[name="subcategory_id"]').on('change', function(){
+            var subcategory_id = $(this).val();
+            if(subcategory_id) {
+                $.ajax({
+                    url: "{{  url('/category/subsubcategory/ajax') }}/"+subcategory_id,
+                    type:"GET",
+                    dataType:"json",
+                    success:function(data) {
+                        var d =$('select[name="subsubcategory_id"]').empty();
+                            $.each(data, function(key, value){
+                                $('select[name="subsubcategory_id"]').append('<option value="'+ value.id +'">' + value.subsubcategory_name_en + '</option>');
+                            });
+                    },
+                });
+            } else {
+                alert('danger');
+            }
+        });
+
+  });
+</script>
 
 <script>
 
