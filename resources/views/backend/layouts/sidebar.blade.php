@@ -47,6 +47,7 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="{{ route('country.list') }}"><i class="ti-more"></i>Country List</a></li>
+              <li><a href="{{ route('district.list') }}"><i class="ti-more"></i>District List</a></li>
             </ul>
         </li>
 

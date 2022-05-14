@@ -21,8 +21,9 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Country Name English</th>
-                                        <th>Country Name Arabic</th>
+                                        <th>Country</th>
+                                        <th>District Name English</th>
+                                        <th>District Name Arabic</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -30,11 +31,12 @@
                                     @foreach($all_data as $data)
                                     <tr>
                                         <td>{{ $loop->index + 1 }}</td>
-                                        <td>{{ $data->country_name_en }}</td>
-                                        <td>{{ $data->country_name_ar }}</td>
+                                        <td>{{ $data->countries->country_name_en }}</td>
+                                        <td>{{ $data->district_name_en }}</td>
+                                        <td>{{ $data->district_name_ar }}</td>
                                         <td width="30%">
-                                            <a title="Edit Data" href="{{ route('country.edit', $data->id) }}" class="btn btn-info"><i class="fa fa-pencil"></i></a>
-                                            <a title="Delete Data" href="{{ route('country.delete', $data->id) }}" id="delete" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                            <a title="Edit Data" href="{{ route('district.edit', $data->id) }}" class="btn btn-info"><i class="fa fa-pencil"></i></a>
+                                            <a title="Delete Data" href="{{ route('district.delete', $data->id) }}" id="delete" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -49,31 +51,50 @@
 
                 <!-- /.col -->
 
+                @php
+                    $all_country = \App\Models\Country::all();
+                @endphp
+
                 <div class="col-4">
 
                     <div class="box">
                        <div class="box-header with-border">
-                         <h3 class="box-title">Add Country</h3>
+                         <h3 class="box-title">Add District</h3>
                        </div>
                        <!-- /.box-header -->
                        <div class="box-body">
                            <div class="table-responsive">
-                               <form action="{{ route('country.store') }}" method="POST">
+                               <form action="{{ route('district.store') }}" method="POST">
                                @csrf
+
                                     <div class="form-group">
-                                        <h5>Country Name English <span class="text-danger">*</span></h5>
+                                        <h5>Select Country <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="text" name="country_name_en" class="form-control">
-                                            @error('country_name_en')
+                                            <select class="form-control select2" name="country_id" style="width: 100%;">
+                                                <option selected="selected">--Select--</option>
+                                                @foreach ($all_country as $coun)
+                                                    <option value="{{ $coun->id }}">{{ $coun->country_name_en }} | {{ $coun->country_name_ar }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('country_id')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <h5>Country Name Arabic <span class="text-danger">*</span></h5>
+                                        <h5>District Name English <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="text" name="country_name_ar" class="form-control">
-                                            @error('country_name_ar')
+                                            <input type="text" name="district_name_en" class="form-control">
+                                            @error('district_name_en')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <h5>District Name Arabic <span class="text-danger">*</span></h5>
+                                        <div class="controls">
+                                            <input type="text" name="district_name_ar" class="form-control">
+                                            @error('district_name_ar')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>

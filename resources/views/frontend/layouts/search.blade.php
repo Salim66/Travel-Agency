@@ -13,49 +13,23 @@
                                     <div class="searchbox-icon">
                                         <i class="bi bi-geo-alt"></i>
                                     </div>
+                                    @php
+                                        $all_country = \App\Models\Country::with('districts')->get();
+                                        // return $all_country;
+                                    @endphp
                                     <div class="searchbox-input">
                                         <label for="deatination_drop">Destination</label>
                                         <select data-placeholder="Where Are You Going?" id="deatination_drop">
                                             <option value="">Where Are You Going?</option>
-                                            <optgroup label="India">
+                                            @foreach($all_country as $country)
+                                            <optgroup label="{{ $country->country_name_en }}">
+                                                @foreach($country->districts as $dis)
                                                 <option>
-                                                    Solt Lake
+                                                    {{ $dis->district_name_en }}
                                                 </option>
-                                                <option>
-                                                    Kolkata
-                                                </option>
-                                                <option>
-                                                    Mohamia
-                                                </option>
-                                                <option>
-                                                    Mumbai
-                                                </option>
-                                                <option>
-                                                    New Delhi
-                                                </option>
+                                                @endforeach
                                             </optgroup>
-                                            <optgroup label=" Bangladash">
-                                                <option>
-                                                    Cox's Bazer
-                                                </option>
-                                                <option>
-                                                    Rangamati
-                                                </option>
-                                                <option>
-                                                    Banderban
-                                                </option>
-                                            </optgroup>
-                                            <optgroup label=" Pakistan">
-                                                <option>
-                                                    Korachi
-                                                </option>
-                                                <option>
-                                                    Rangamati
-                                                </option>
-                                                <option>
-                                                    Banderban
-                                                </option>
-                                            </optgroup>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>

@@ -7,6 +7,7 @@ use App\Http\Controllers\Frontend\SettingsController;
 use App\Http\Controllers\Backend\ContactInfoController;
 use App\Http\Controllers\Backend\ContactUsFomrController;
 use App\Http\Controllers\Backend\CountryController;
+use App\Http\Controllers\Backend\DistrictController;
 use App\Http\Controllers\Backend\HeroSliderController;
 use App\Http\Controllers\Backend\LocationController;
 use App\Http\Controllers\Backend\PackageController;
@@ -88,6 +89,15 @@ Route::middleware([
         Route::get('/edit/{id}', [CountryController::class, 'edit'])->name('country.edit');
         Route::put('/update/{id}', [CountryController::class, 'update'])->name('country.update');
         Route::get('/delete/{id}', [CountryController::class, 'delete'])->name('country.delete');
+    });
+
+    // District Routes
+    Route::prefix('districts')->group(function () {
+        Route::get('/list', [DistrictController::class, 'list'])->name('district.list');
+        Route::post('/store', [DistrictController::class, 'store'])->name('district.store');
+        Route::get('/edit/{id}', [DistrictController::class, 'edit'])->name('district.edit');
+        Route::put('/update/{id}', [DistrictController::class, 'update'])->name('district.update');
+        Route::get('/delete/{id}', [DistrictController::class, 'delete'])->name('district.delete');
     });
 
     // Hero Banner Routes
