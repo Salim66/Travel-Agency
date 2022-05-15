@@ -118,6 +118,9 @@ Route::middleware([
         Route::get('/edit/{id}', [PackageController::class, 'edit'])->name('package.edit');
         Route::put('/update/{id}', [PackageController::class, 'update'])->name('package.update');
         Route::get('/delete/{id}', [PackageController::class, 'delete'])->name('package.delete');
+        Route::get('/inactive/{id}', [PackageController::class, 'packageInactive'])->name('package.inactive');
+        Route::get('/active/{id}', [PackageController::class, 'packageActive'])->name('package.active');
+        Route::get('/view/{id}', [PackageController::class, 'packageView'])->name('package.view');
     });
 
 
