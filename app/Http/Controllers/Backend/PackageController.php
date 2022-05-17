@@ -43,12 +43,12 @@ class PackageController extends Controller
             'package_image' => 'required'
         ]);
 
-        $save_url = '';
+        $save_url_i = '';
         if($request->hasFile('package_image')){
             $image = $request->file('package_image');
             $image_unique_name = md5(time().rand()) . '.' . $image->getClientOriginalExtension();
             Image::make($image)->resize(770, 410)->save('upload/package/'. $image_unique_name);
-            $save_url = 'upload/package/'.$image_unique_name;
+            $save_url_i = 'upload/package/'.$image_unique_name;
         }
 
         //post gallery image
@@ -80,12 +80,13 @@ class PackageController extends Controller
             'district_id' => $request->district_id,
             'package_title_en' => $request->package_title_en,
             'package_title_ar' => $request->package_title_ar,
+            'package_title_slug' => $this->getSlug($request->package_title_en),
             'package_duration' => $request->package_duration,
             'package_amount' => $request->package_amount,
             'package_group_size' => $request->package_group_size,
             'package_tour_guide' => $request->package_tour_guide,
             'package_rating' => $request->package_rating,
-            'package_image' => $save_url,
+            'package_image' => $save_url_i,
             'package_tour_gallery' => json_encode($gallery_image_u_n),
             'information_details_en' => $request->information_details_en,
             'information_details_ar' => $request->information_details_ar,
@@ -192,6 +193,7 @@ class PackageController extends Controller
              $data->district_id = $request->district_id;
              $data->package_title_en = $request->package_title_en;
              $data->package_title_ar = $request->package_title_ar;
+             $data->package_title_slug = $this->getSlug($request->package_title_en);
              $data->package_duration = $request->package_duration;
              $data->package_amount = $request->package_amount;
              $data->package_group_size = $request->package_group_size;

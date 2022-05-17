@@ -9,7 +9,6 @@ use App\Http\Controllers\Backend\ContactUsFomrController;
 use App\Http\Controllers\Backend\CountryController;
 use App\Http\Controllers\Backend\DistrictController;
 use App\Http\Controllers\Backend\HeroSliderController;
-use App\Http\Controllers\Backend\LocationController;
 use App\Http\Controllers\Backend\PackageController;
 use App\Http\Controllers\Backend\SocialLinkController;
 
@@ -30,6 +29,11 @@ Route::get('/', function () {
 });
 // Pages Routes
 Route::get('/contact-us', [SettingsController::class, 'contactUs'])->name('contact-us');
+Route::get('/package-details/{slug}', [SettingsController::class, 'packageDetails'])->name('package-details');
+
+
+// Package book form Route
+Route::post('/package-booking', [SettingsController::class, 'packageBookingForm'])->name('package.book.form');
 
 // Contact form submit Route
 Route::post('/contact-form-submit', [SettingsController::class, 'contactFormSubmit'])->name('contact.form.submit');
