@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('book_packages', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('package_id');
+            $table->foreign('package_id')->references('id')->on('packages')->onDelete('cascade');
             $table->string('name');
             $table->string('email');
             $table->string('phone');
@@ -22,6 +24,7 @@ return new class extends Migration
             $table->string('child')->nullable();
             $table->string('date');
             $table->string('message')->nullable();
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

@@ -447,6 +447,9 @@
                                 <div class="widget-body">
                                     <form action="{{ route('package.book.form') }}" method="post" id="booking-form">
                                         @csrf
+
+                                        <input type="hidden" name="package_id" value="{{ $data->id }}">
+
                                         <div class="booking-form-wrapper">
                                             <div class="custom-input-group">
                                                 <input name="name" type="text" placeholder="Your Full Name" id="name" />
@@ -471,7 +474,7 @@
                                                     <div class="custom-input-group">
                                                         <i class="bi bi-chevron-down"></i>
                                                         <select name="adult" id="truist-adult">
-                                                            <option selected>Adult</option>
+                                                            <option selected disabled>Adult</option>
                                                             <option value="1"> 1</option>
                                                             <option value="2"> 2</option>
                                                             <option value="3"> 3</option>
@@ -492,7 +495,7 @@
                                                     <div class="custom-input-group">
                                                         <i class="bi bi-chevron-down"></i>
                                                         <select name="child" id="tourist-child">
-                                                            <option selected>Child</option>
+                                                            <option selected disabled>Child</option>
                                                             <option value="1"> 1</option>
                                                             <option value="2">2</option>
                                                             <option value="3"> 3</option>

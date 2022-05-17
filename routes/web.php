@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\BookingPackageController;
 use App\Http\Controllers\Backend\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\LanguageController;
@@ -125,6 +126,21 @@ Route::middleware([
         Route::get('/inactive/{id}', [PackageController::class, 'packageInactive'])->name('package.inactive');
         Route::get('/active/{id}', [PackageController::class, 'packageActive'])->name('package.active');
         Route::get('/view/{id}', [PackageController::class, 'packageView'])->name('package.view');
+    });
+
+    // Booking Packages Routes
+    Route::prefix('booking-package')->group(function () {
+        Route::get('/pending-list', [BookingPackageController::class, 'pendingList'])->name('pending.package.booking');
+        Route::get('/completed-list', [BookingPackageController::class, 'CompletedList'])->name('completed.package.booking');
+        Route::get('/view/{id}', [BookingPackageController::class, 'pendingPackageView'])->name('pending.booking.package.view');
+        Route::get('/completed/{id}', [BookingPackageController::class, 'packageCompleted'])->name('booking.package.completed');
+        Route::get('/pending/{id}', [BookingPackageController::class, 'packagePending'])->name('booking.package.pending');
+        Route::get('/delete/{id}', [BookingPackageController::class, 'bookingPackagedelete'])->name('booking.package.delete');
+        Route::get('/add', [PackageController::class, 'add'])->name('package.add');
+        Route::post('/store', [PackageController::class, 'store'])->name('package.store');
+        Route::get('/edit/{id}', [PackageController::class, 'edit'])->name('package.edit');
+        Route::put('/update/{id}', [PackageController::class, 'update'])->name('package.update');
+        Route::get('/active/{id}', [PackageController::class, 'packageActive'])->name('package.active');
     });
 
 

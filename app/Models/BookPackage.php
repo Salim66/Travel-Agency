@@ -11,4 +11,8 @@ class BookPackage extends Model
 
     protected $guarded = [];
 
+    public function packages(){
+        return $this->belongsTo(Package::class, 'package_id');
+    }
+
 }
