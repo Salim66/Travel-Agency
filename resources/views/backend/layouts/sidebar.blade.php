@@ -108,6 +108,19 @@
             </ul>
         </li>
 
+        <li class="treeview">
+            <a href="#">
+              <i data-feather="layers"></i>
+              <span>Tour Guide</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-right pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="{{ route('guide.list') }}"><i class="ti-more"></i>All Tour Guide</a></li>
+            </ul>
+        </li>
+
 
         <li class="treeview">
           <a href="#">
@@ -169,6 +182,8 @@
 			<li><a href="{{ route('completed.package.booking') }}"><i class="ti-more"></i>Completed Package</a></li>
 		  </ul>
         </li>
+
+
 
         <li class="treeview">
           <a href="#">

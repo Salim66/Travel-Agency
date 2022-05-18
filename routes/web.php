@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\DistrictController;
 use App\Http\Controllers\Backend\HeroSliderController;
 use App\Http\Controllers\Backend\PackageController;
 use App\Http\Controllers\Backend\SocialLinkController;
+use App\Http\Controllers\Backend\TourGuideController;
 use App\Http\Controllers\Backend\TravelGalleryController;
 
 /*
@@ -174,6 +175,18 @@ Route::middleware([
         Route::get('/delete/{id}', [TravelGalleryController::class, 'delete'])->name('gallery.delete');
         Route::get('/inactive/{id}', [TravelGalleryController::class, 'galleryInactive'])->name('gallery.inactive');
         Route::get('/active/{id}', [TravelGalleryController::class, 'galleryActive'])->name('gallery.active');
+    });
+
+
+    // Tour Guide Routes
+    Route::prefix('tour-guide')->group(function () {
+        Route::get('/list', [TourGuideController::class, 'list'])->name('guide.list');
+        Route::post('/store', [TourGuideController::class, 'store'])->name('guide.store');
+        Route::get('/edit/{id}', [TourGuideController::class, 'edit'])->name('guide.edit');
+        Route::put('/update/{id}', [TourGuideController::class, 'update'])->name('guide.update');
+        Route::get('/delete/{id}', [TourGuideController::class, 'delete'])->name('guide.delete');
+        Route::get('/inactive/{id}', [TourGuideController::class, 'guideInactive'])->name('guide.inactive');
+        Route::get('/active/{id}', [TourGuideController::class, 'guideActive'])->name('guide.active');
     });
 
 
