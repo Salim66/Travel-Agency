@@ -91,7 +91,20 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="{{ route('destination.list') }}"><i class="ti-more"></i>All Destination</a></li>
-              <li><a href="{{ route('district.list') }}"><i class="ti-more"></i>District List</a></li>
+              <li><a href="{{ route('destination.add') }}"><i class="ti-more"></i>Add Destination</a></li>
+            </ul>
+        </li>
+
+        <li class="treeview">
+            <a href="#">
+              <i data-feather="inbox"></i>
+              <span>Travel Gallery</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-right pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="{{ route('gallery.list') }}"><i class="ti-more"></i>All Gallery</a></li>
             </ul>
         </li>
 

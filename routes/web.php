@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\DistrictController;
 use App\Http\Controllers\Backend\HeroSliderController;
 use App\Http\Controllers\Backend\PackageController;
 use App\Http\Controllers\Backend\SocialLinkController;
+use App\Http\Controllers\Backend\TravelGalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +36,7 @@ Route::get('/package-details/{slug}', [SettingsController::class, 'packageDetail
 Route::get('/packages', [SettingsController::class, 'allPackages'])->name('all.package');
 Route::get('/holiday-packages', [SettingsController::class, 'allHolidayPackages'])->name('holiday.packages');
 Route::get('/destination-details/{slug}', [SettingsController::class, 'destinationDetails'])->name('destination-details');
-Route::get('/category-wise-destination/{id}', [SettingsController::class, 'categoryWiseDestination'])->name('category.wise.destination');
+Route::get('/category-wise-destination/{id}/{name}', [SettingsController::class, 'categoryWiseDestination'])->name('category.wise.destination');
 Route::post('/search-wise-destination', [SettingsController::class, 'searchWiseDestination'])->name('search.wise.destination');
 
 
@@ -161,6 +162,18 @@ Route::middleware([
         Route::get('/inactive/{id}', [DestinationController::class, 'destinationInactive'])->name('destination.inactive');
         Route::get('/active/{id}', [DestinationController::class, 'destinationActive'])->name('destination.active');
         Route::get('/view/{id}', [DestinationController::class, 'destinationView'])->name('destination.view');
+    });
+
+
+    // Travel Gallery Routes
+    Route::prefix('travel-gallery')->group(function () {
+        Route::get('/list', [TravelGalleryController::class, 'list'])->name('gallery.list');
+        Route::post('/store', [TravelGalleryController::class, 'store'])->name('gallery.store');
+        Route::get('/edit/{id}', [TravelGalleryController::class, 'edit'])->name('gallery.edit');
+        Route::put('/update/{id}', [TravelGalleryController::class, 'update'])->name('gallery.update');
+        Route::get('/delete/{id}', [TravelGalleryController::class, 'delete'])->name('gallery.delete');
+        Route::get('/inactive/{id}', [TravelGalleryController::class, 'galleryInactive'])->name('gallery.inactive');
+        Route::get('/active/{id}', [TravelGalleryController::class, 'galleryActive'])->name('gallery.active');
     });
 
 

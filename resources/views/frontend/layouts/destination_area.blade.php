@@ -39,8 +39,8 @@
                                 <h3 class="d-card-title"><a href="{{ route('destination-details', $data->title_slug) }}">{{ $data->title_en }}</a></h3>
                                 @endif
                                 <div class="d-card-info">
-                                    <div class="place-count"><span>{{ $data->number_of_place }}</span> Place</div>
-                                    <div class="hotel-count"><span>{{ $data->number_of_hotal }}</span> Hotel</div>
+                                    <div class="place-count"><span>{{ $data->number_of_place }}</span> @if(session()->get('language') == 'arabic') مكان @else Place @endif</div>
+                                    <div class="hotel-count"><span>{{ $data->number_of_hotal }}</span> @if(session()->get('language') == 'arabic') الفندق @else Hotel @endif</div>
                                 </div>
                                 <ul class="d-rating">
                                     @for($i=0; $i<$data->rating; $i++)

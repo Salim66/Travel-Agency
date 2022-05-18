@@ -145,9 +145,9 @@
                                         @foreach($all_cat as $cat)
                                         <li class="category-check">
                                             @if(session()->get('language') == 'arabic')
-                                            <a class="des_cat" href="{{  r }}oute('category.wise.destination', $cat->id) }}" target="_blank" rel="noopener noreferrer">{{ $cat->name_ar }}</a>
+                                            <a class="des_cat" href="{{  asset('/category-wise-destination/'.$cat->id.'/'.$cat->name_en) }}" target="_blank" rel="noopener noreferrer">{{ $cat->name_ar }}</a>
                                             @else
-                                            <a class="des_cat" href="{{ route('category.wise.destination', $cat->id) }}" target="_blank" rel="noopener noreferrer">{{ $cat->name_en }}</a>
+                                            <a class="des_cat" href="{{ asset('/category-wise-destination/'.$cat->id.'/'.$cat->name_en) }}" target="_blank" rel="noopener noreferrer">{{ $cat->name_en }}</a>
                                             @endif
                                         </li>
                                         @endforeach

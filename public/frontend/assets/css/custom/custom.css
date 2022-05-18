@@ -30,3 +30,7 @@
 .des_cat:hover {
     color: #ff4838;
 }
+
+.gallary-item img {
+    object-fit: cover;
+}

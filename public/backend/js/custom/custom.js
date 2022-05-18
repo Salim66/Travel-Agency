@@ -57,6 +57,13 @@
             $('.destination_image_preview').attr('src', imageURL);
         });
 
+        // Travel Gallery Image Preview
+        $('#travel_gallery_image_load').change(function(e){
+            e.preventDefault();
+            let imageURL = URL.createObjectURL(e.target.files[0]);
+            $('.travel_gallery_image_preview').attr('src', imageURL);
+        });
+
 
     });
 })(jQuery);

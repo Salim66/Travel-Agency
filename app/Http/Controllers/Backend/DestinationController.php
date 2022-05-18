@@ -106,7 +106,7 @@ class DestinationController extends Controller
                     unlink($data -> image);
                 }
                 $image_unique_name = md5(time().rand()) . '.' . $image->getClientOriginalExtension();
-                Image::make($image)->resize(770, 410)->save('upload/destination/'. $image_unique_name);
+                Image::make($image)->resize(770, 400)->save('upload/destination/'. $image_unique_name);
                 $save_url_i = 'upload/destination/'.$image_unique_name;
             }else {
                 $save_url_i = $data->image;

@@ -13,7 +13,7 @@
                     <div class="box">
                         <div class="box-header with-border">
                         <h3 class="box-title">Top Destination List</h3>
-                        <a title="Add Package" href="{{ route('destination.add') }}" class="btn btn-info float-right"><i class="fa fa-plus"></i></a>
+                        <a title="Add Destination" href="{{ route('destination.add') }}" class="btn btn-info float-right"><i class="fa fa-plus"></i></a>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
