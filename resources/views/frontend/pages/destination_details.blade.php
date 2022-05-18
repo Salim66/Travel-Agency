@@ -112,91 +112,69 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-lg-4 mt-5 mt-lg-0">
                         <div class="package-sidebar">
                             <aside class="package-widget widget-search">
                                 <div class="widget-title">
+                                    @if(session()->get('language') == 'arabic')
+                                    <h4>ابحث هنا</h4>
+                                    @else
                                     <h4>Search Here</h4>
+                                    @endif
                                 </div>
                                 <div class="widget-body">
-                                    <form action="#" method="post" id="blog-sidebar-search">
+                                    <form action="{{ route('search.wise.destination') }}"  method="POST" id="blog-sidebar-search">
+                                        @csrf
                                         <div class="search-input-group">
-                                            <input type="search" placeholder="Your Destination" />
-                                            <button type="submit">SEAECH</button>
+                                            <input type="search" name="search" placeholder="Your Destination" />
+                                            <button type="submit">@if(session()->get('language') == 'arabic') بحث @else SEAECH @endif</button>
                                         </div>
                                     </form>
                                 </div>
                             </aside>
+                            @php
+                                $all_cat = \App\Models\Category::limit(8)->get();
+                            @endphp
                             <aside class="package-widget widget-tour-categoris mt-30">
                                 <div class="widget-title">
                                     <h4>Category</h4>
                                 </div>
                                 <div class="widget-body">
                                     <ul>
+                                        @foreach($all_cat as $cat)
                                         <li class="category-check">
-                                            <label class="form-check-label" for="cate"> <i class="bi bi-chevron-double-right"></i> New York City </label>
-                                            <input class="form-check-input" type="checkbox" id="cate" />
+                                            @if(session()->get('language') == 'arabic')
+                                            <a class="des_cat" href="{{  r }}oute('category.wise.destination', $cat->id) }}" target="_blank" rel="noopener noreferrer">{{ $cat->name_ar }}</a>
+                                            @else
+                                            <a class="des_cat" href="{{ route('category.wise.destination', $cat->id) }}" target="_blank" rel="noopener noreferrer">{{ $cat->name_en }}</a>
+                                            @endif
                                         </li>
-                                        <li class="category-check">
-                                            <label class="form-check-label" for="cate2"> <i class="bi bi-chevron-double-right"></i>Adventure Tour </label>
-                                            <input class="form-check-input" type="checkbox" id="cate2" />
-                                        </li>
-                                        <li class="category-check">
-                                            <label class="form-check-label" for="cate3"> <i class="bi bi-chevron-double-right"></i> Couple Tour </label>
-                                            <input class="form-check-input" type="checkbox" id="cate3" />
-                                        </li>
-                                        <li class="category-check">
-                                            <label class="form-check-label" for="cate4"> <i class="bi bi-chevron-double-right"></i> Village Tour </label>
-                                            <input class="form-check-input" type="checkbox" id="cate4" />
-                                        </li>
-                                        <li class="category-check">
-                                            <label class="form-check-label" for="cate5"> <i class="bi bi-chevron-double-right"></i>Group Tour </label>
-                                            <input class="form-check-input" type="checkbox" id="cate5" />
-                                        </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </aside>
+
+                            @php
+                                $all_des = \App\Models\Destination::where('status', true)->latest()->get();
+                            @endphp
                             <aside class="package-widget widget-gallary mt-30">
                                 <div class="widget-title">
+                                    @if(session()->get('language') == 'arabic')
+                                    <h4>الوجهة الجديدة</h4>
+                                    @else
                                     <h4>New Destination</h4>
+                                    @endif
                                 </div>
                                 <ul class="widget-body">
+                                    @foreach($all_des as $des)
                                     <li>
-                                        <a href="assets/images/gallary/sb-gallary-1.png" data-fancybox="gallery" data-caption="Caption Here">
-                                            <img src="assets/images/gallary/sb-gallary-1.png" alt="" />
+                                        <a href="{{ URL::to($des->image) }}" data-fancybox="gallery" data-caption="Caption Here">
+                                            <img src="{{ URL::to($des->image) }}" alt="" />
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="assets/images/gallary/sb-gallary-2.png" data-fancybox="gallery" data-caption="Caption Here">
-                                            <img src="assets/images/gallary/sb-gallary-2.png" alt="" />
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="assets/images/gallary/sb-gallary-3.png" data-fancybox="gallery" data-caption="Caption Here">
-                                            <img src="assets/images/gallary/sb-gallary-3.png" alt="" />
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="assets/images/gallary/sb-gallary-4.png" data-fancybox="gallery" data-caption="Caption Here">
-                                            <img src="assets/images/gallary/sb-gallary-4.png" alt="" />
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="assets/images/gallary/sb-gallary-5.png" data-fancybox="gallery" data-caption="Caption Here">
-                                            <img src="assets/images/gallary/sb-gallary-5.png" alt="" />
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="assets/images/gallary/sb-gallary-6.png" data-fancybox="gallery" data-caption="Caption Here">
-                                            <img src="assets/images/gallary/sb-gallary-6.png" alt="" />
-                                        </a>
-                                    </li>
+                                    @endforeach
                                 </ul>
-                            </aside>
-                            <aside class="widget-banner mt-30">
-                                <a href="#">
-                                    <img src="assets/images/banner/sidebar-banner.png" alt="" class="img-fluid" />
-                                </a>
                             </aside>
                         </div>
                     </div>

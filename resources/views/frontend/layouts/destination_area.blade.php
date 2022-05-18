@@ -1,5 +1,5 @@
 @php
-    $all_data = \App\Models\Destination::all();
+    $all_data = \App\Models\Destination::where('status', true)->get();
 @endphp
 
 <div class="destination-area destination-style-one pt-110">

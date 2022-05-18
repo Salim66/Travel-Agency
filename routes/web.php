@@ -35,6 +35,8 @@ Route::get('/package-details/{slug}', [SettingsController::class, 'packageDetail
 Route::get('/packages', [SettingsController::class, 'allPackages'])->name('all.package');
 Route::get('/holiday-packages', [SettingsController::class, 'allHolidayPackages'])->name('holiday.packages');
 Route::get('/destination-details/{slug}', [SettingsController::class, 'destinationDetails'])->name('destination-details');
+Route::get('/category-wise-destination/{id}', [SettingsController::class, 'categoryWiseDestination'])->name('category.wise.destination');
+Route::post('/search-wise-destination', [SettingsController::class, 'searchWiseDestination'])->name('search.wise.destination');
 
 
 // Package book form Route
