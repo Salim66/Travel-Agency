@@ -3,3 +3,11 @@
     line-height: 20px;
     padding: 13px 50px;
 }
+
+.destination-card-style-one .d-card-thumb img {
+    width: 100%;
+    -webkit-transition: all .4s;
+    transition: all .4s;
+    height: 205px;
+    object-fit: cover;
+}

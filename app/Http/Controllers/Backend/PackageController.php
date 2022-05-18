@@ -17,7 +17,7 @@ class PackageController extends Controller
      * Data list
      */
     public function list(){
-        $all_data = Package::with('categories', 'countries', 'districts')->latest()->get();
+        $all_data = Package::with(['categories', 'countries', 'districts'])->latest()->get();
         return view('backend.packages.list', compact('all_data'));
     }
 

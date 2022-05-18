@@ -1,5 +1,5 @@
 @php
-    $all_data = \App\Models\Package::where('package_holiday_offer', null)->latest()->get();
+    $all_data = \App\Models\Package::where('package_holiday_offer', null)->latest()->limit(6)->get();
 @endphp
 <div class="package-area package-style-one pt-110">
     <div class="container">
@@ -16,9 +16,9 @@
             <div class="col-lg-4">
                 <div class="package-btn text-lg-end">
                     @if(session()->get('language') == 'arabic')
-                    <a href="package.html" class="button-fill-primary">مشاهدة الكل جولة</a>
+                    <a href="{{ route('all.package') }}" class="button-fill-primary">مشاهدة الكل جولة</a>
                     @else
-                    <a href="package.html" class="button-fill-primary">View All Tour</a>
+                    <a href="{{ route('all.package') }}" class="button-fill-primary">View All Tour</a>
                     @endif
                 </div>
             </div>

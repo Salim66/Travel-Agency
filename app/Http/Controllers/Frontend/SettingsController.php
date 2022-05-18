@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\BookPackage;
 use App\Models\ContactForm;
+use App\Models\Destination;
 use App\Models\Package;
 use Illuminate\Http\Request;
 
@@ -65,5 +66,29 @@ class SettingsController extends Controller
         ];
 
         return redirect()->back()->with($notification);
+    }
+
+    /**
+     * All Packages
+     */
+    public function allPackages(){
+        $all_data = Package::where('package_holiday_offer', null)->latest()->paginate(12);
+        return view('frontend.pages.all_package', compact('all_data'));
+    }
+
+    /**
+     * All Holiday Packages
+     */
+    public function allHolidayPackages(){
+        $all_data = Package::where('package_holiday_offer', true)->latest()->paginate(12);
+        return view('frontend.pages.all_holiday_package', compact('all_data'));
+    }
+
+    /**
+     * Destination Details
+     */
+    public function destinationDetails($slug){
+        $data = Destination::with('categories')->where('title_slug', $slug)->first();
+        return view('frontend.pages.destination_details', compact('data'));
     }
 }

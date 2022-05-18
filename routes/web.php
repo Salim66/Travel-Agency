@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\SettingsController;
 use App\Http\Controllers\Backend\ContactInfoController;
 use App\Http\Controllers\Backend\ContactUsFomrController;
 use App\Http\Controllers\Backend\CountryController;
+use App\Http\Controllers\Backend\DestinationController;
 use App\Http\Controllers\Backend\DistrictController;
 use App\Http\Controllers\Backend\HeroSliderController;
 use App\Http\Controllers\Backend\PackageController;
@@ -31,6 +32,9 @@ Route::get('/', function () {
 // Pages Routes
 Route::get('/contact-us', [SettingsController::class, 'contactUs'])->name('contact-us');
 Route::get('/package-details/{slug}', [SettingsController::class, 'packageDetails'])->name('package-details');
+Route::get('/packages', [SettingsController::class, 'allPackages'])->name('all.package');
+Route::get('/holiday-packages', [SettingsController::class, 'allHolidayPackages'])->name('holiday.packages');
+Route::get('/destination-details/{slug}', [SettingsController::class, 'destinationDetails'])->name('destination-details');
 
 
 // Package book form Route
@@ -141,6 +145,20 @@ Route::middleware([
         Route::get('/edit/{id}', [PackageController::class, 'edit'])->name('package.edit');
         Route::put('/update/{id}', [PackageController::class, 'update'])->name('package.update');
         Route::get('/active/{id}', [PackageController::class, 'packageActive'])->name('package.active');
+    });
+
+
+    // Destinations Routes
+    Route::prefix('destination')->group(function () {
+        Route::get('/list', [DestinationController::class, 'list'])->name('destination.list');
+        Route::get('/add', [DestinationController::class, 'add'])->name('destination.add');
+        Route::post('/store', [DestinationController::class, 'store'])->name('destination.store');
+        Route::get('/edit/{id}', [DestinationController::class, 'edit'])->name('destination.edit');
+        Route::put('/update/{id}', [DestinationController::class, 'update'])->name('destination.update');
+        Route::get('/delete/{id}', [DestinationController::class, 'delete'])->name('destination.delete');
+        Route::get('/inactive/{id}', [DestinationController::class, 'destinationInactive'])->name('destination.inactive');
+        Route::get('/active/{id}', [DestinationController::class, 'destinationActive'])->name('destination.active');
+        Route::get('/view/{id}', [DestinationController::class, 'destinationView'])->name('destination.view');
     });
 
 

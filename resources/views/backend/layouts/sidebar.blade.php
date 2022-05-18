@@ -82,6 +82,21 @@
 
 
         <li class="treeview">
+            <a href="#">
+              <i data-feather="map"></i>
+              <span>Destination</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-right pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ route('destination.list') }}"><i class="ti-more"></i>All Destination</a></li>
+              <li><a href="{{ route('district.list') }}"><i class="ti-more"></i>District List</a></li>
+            </ul>
+        </li>
+
+
+        <li class="treeview">
           <a href="#">
             <i data-feather="message-circle"></i>
             <span>Application</span>

@@ -50,6 +50,13 @@
             $('.package_image_preview').attr('src', imageURL);
         });
 
+        // Destination Image Preview
+        $('#destination_image_load').change(function(e){
+            e.preventDefault();
+            let imageURL = URL.createObjectURL(e.target.files[0]);
+            $('.destination_image_preview').attr('src', imageURL);
+        });
+
 
     });
 })(jQuery);

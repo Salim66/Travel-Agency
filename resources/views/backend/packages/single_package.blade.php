@@ -132,9 +132,9 @@
                                 <td>Holiday Offer</td>
                                 <td>
                                     @if($package->package_holiday_offer == 1)
-                                    true
+                                    <span class="text-success">Yes</span>
                                     @else
-                                    false
+                                    <span class="text-danger">No</span>
                                     @endif
                                 </td>
                             </tr>
