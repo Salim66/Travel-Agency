@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\DistrictController;
 use App\Http\Controllers\Backend\HeroSliderController;
 use App\Http\Controllers\Backend\PackageController;
 use App\Http\Controllers\Backend\SocialLinkController;
+use App\Http\Controllers\Backend\TagController;
 use App\Http\Controllers\Backend\TourGuideController;
 use App\Http\Controllers\Backend\TravelGalleryController;
 
@@ -187,6 +188,15 @@ Route::middleware([
         Route::get('/delete/{id}', [TourGuideController::class, 'delete'])->name('guide.delete');
         Route::get('/inactive/{id}', [TourGuideController::class, 'guideInactive'])->name('guide.inactive');
         Route::get('/active/{id}', [TourGuideController::class, 'guideActive'])->name('guide.active');
+    });
+
+    // Tag Routes
+    Route::prefix('tags')->group(function () {
+        Route::get('/list', [TagController::class, 'list'])->name('tag.list');
+        Route::post('/store', [TagController::class, 'store'])->name('tag.store');
+        Route::get('/edit/{id}', [TagController::class, 'edit'])->name('tag.edit');
+        Route::put('/update/{id}', [TagController::class, 'update'])->name('tag.update');
+        Route::get('/delete/{id}', [TagController::class, 'delete'])->name('tag.delete');
     });
 
 

@@ -39,6 +39,19 @@
 
         <li class="treeview">
             <a href="#">
+              <i data-feather="edit-2"></i>
+              <span>Tag</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-right pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ route('tag.list') }}"><i class="ti-more"></i>Tag List</a></li>
+            </ul>
+        </li>
+
+        <li class="treeview">
+            <a href="#">
               <i data-feather="map"></i>
               <span>Country</span>
               <span class="pull-right-container">
