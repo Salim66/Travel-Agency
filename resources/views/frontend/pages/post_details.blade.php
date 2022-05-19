@@ -179,17 +179,25 @@
                                     @endforeach
                                 </ul>
                             </aside>
+                            @php
+                                $all_tag = \App\Models\Tag::limit(6)->get();
+                            @endphp
                             <aside class="blog-widget widget-tag-cloud mt-30">
                                 <div class="widget-title">
+                                    @if(session()->get('language') == 'arabic')
+                                    <h4>العلامات</h4>
+                                    @else
                                     <h4>Tags</h4>
+                                    @endif
                                 </div>
                                 <div class="tag-cloud widget-body">
-                                    <a href="#">Adventure</a>
-                                    <a href="#">Trip</a>
-                                    <a href="#">Guided</a>
-                                    <a href="#">Historical</a>
-                                    <a href="#">Road Trips</a>
-                                    <a href="#">Tourist</a>
+                                    @foreach($all_tag as $tag)
+                                        @if(session()->get('language') == 'arabic')
+                                        <a href="{{  asset('/tag-wise-post/'.$tag->id.'/'.$tag->name_en) }}">{{ $tag->name_ar }}</a>
+                                        @else
+                                        <a href="{{  asset('/tag-wise-post/'.$tag->id.'/'.$tag->name_en) }}">{{ $tag->name_en }}</a>
+                                        @endif
+                                    @endforeach
                                 </div>
                             </aside>
                             @php

@@ -10,6 +10,7 @@ use App\Models\ContactForm;
 use App\Models\Destination;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Tag;
 
 class SettingsController extends Controller
 {
@@ -157,5 +158,40 @@ class SettingsController extends Controller
         $all_data = Post::where('category_id', $id)->where('status', true)->latest()->paginate(12);
         $category = Category::where('id', $id)->first();
         return view('frontend.pages.category_wise_post', compact('all_data', 'category'));
+    }
+
+    /**
+     * Tag Wise Post
+     */
+    public function tagWisePost($id){
+        $all_data = Post::where('tag_id', $id)->where('status', true)->latest()->paginate(12);
+        $tag = Tag::where('id', $id)->first();
+        return view('frontend.pages.tag_wise_post', compact('all_data', 'tag'));
+    }
+
+
+    //============== Header ===============//
+    /**
+     * All Post
+     */
+    public function posts(){
+        $all_data = Post::where('status', true)->latest()->paginate(12);
+        return view('frontend.pages.all_post', compact('all_data'));
+    }
+
+    /**
+     * All Package
+     */
+    public function packages(){
+        $all_data = Package::where('status', true)->latest()->paginate(12);
+        return view('frontend.pages.all_package', compact('all_data'));
+    }
+
+    /**
+     * All Destination
+     */
+    public function destination(){
+        $all_data = Destination::where('status', true)->latest()->paginate(12);
+        return view('frontend.pages.all_destination', compact('all_data'));
     }
 }

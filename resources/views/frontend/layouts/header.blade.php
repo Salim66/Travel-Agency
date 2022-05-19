@@ -48,23 +48,23 @@
                             </li>
                             <li>
                                 @if(session()->get('language') == 'arabic')
-                                <a href="#">وجهة</a>
+                                <a href="{{ route('all.destination') }}">وجهة</a>
                                 @else
-                                <a href="#">Destination</a>
+                                <a href="{{ route('all.destination') }}">Destination</a>
                                 @endif
                             </li>
                             <li>
                                 @if(session()->get('language') == 'arabic')
-                                <a href="#">طَرد</a>
+                                <a href="{{ route('all.package') }}">طَرد</a>
                                 @else
-                                <a href="#">Package</a>
+                                <a href="{{ route('all.package') }}">Package</a>
                                 @endif
                             </li>
                             <li>
                                 @if(session()->get('language') == 'arabic')
-                                <a href="#">المدونات</a>
+                                <a href="{{ route('all.blogs') }}">المدونات</a>
                                 @else
-                                <a href="#">Blogs</a>
+                                <a href="{{ route('all.blogs') }}">Blogs</a>
                                 @endif
                             </li>
                             <li>
