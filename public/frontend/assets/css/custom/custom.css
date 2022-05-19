@@ -34,3 +34,21 @@
 .gallary-item img {
     object-fit: cover;
 }
+
+.blog-sidebar .widget-recent-entries-custom ul li .wi img {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+}
+
+.blog-sidebar .widget-gallary ul li img {
+    width: 100%;
+    height: 100px;
+}
+
+.blog-card-gamma .blog-thumb img {
+    width: 100%;
+    height: 270px;
+    -webkit-transition: all .3s ease-in;
+    transition: all .3s ease-in;
+}

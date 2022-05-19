@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Post;
 use App\Models\Package;
 use App\Models\Category;
 use App\Models\BookPackage;
@@ -110,5 +111,51 @@ class SettingsController extends Controller
         $all_data = Destination::where('title_en', 'LIKE', '%'.$search.'%')->orWhere('title_ar', 'LIKE', '%'.$search.'%')->orWhere('detials_en', 'LIKE', '%'.$search.'%')->orWhere('detials_ar', 'LIKE', '%'.$search.'%')->get();
 
         return view('frontend.pages.search_wise_destination', compact('all_data', 'search'));
+    }
+
+    /**
+     * Date Wise Post
+     */
+    public function dateWisePost($id){
+        $data = Post::findOrFail($id);
+        $all_data = Post::with('users')->where('date', $data->date)->latest()->paginate(12);
+        return view('frontend.pages.date_wise_post', compact('all_data'));
+    }
+
+    /**
+     * User Wise Post
+     */
+    public function userWisePost($id){
+        $data = Post::findOrFail($id);
+        $all_data = Post::with('users')->where('user_id', $data->user_id)->latest()->paginate(12);
+        return view('frontend.pages.user_wise_post', compact('all_data'));
+    }
+
+    /**
+     * Post Details
+     */
+    public function postDetails($slug){
+        $data = Post::with(['categories', 'tags', 'users'])->where('title_slug', $slug)->first();
+        return view('frontend.pages.post_details', compact('data'));
+    }
+
+
+    /**
+     * Search Wise Post
+     */
+    public function searchWisePost(Request $request){
+        $search = $request->search;
+        $all_data = Post::where('title_en', 'LIKE', '%'.$search.'%')->orWhere('title_ar', 'LIKE', '%'.$search.'%')->orWhere('details_en', 'LIKE', '%'.$search.'%')->orWhere('details_ar', 'LIKE', '%'.$search.'%')->get();
+
+        return view('frontend.pages.search_wise_post', compact('all_data', 'search'));
+    }
+
+    /**
+     * Category Wise Post
+     */
+    public function categoryWisePost($id){
+        $all_data = Post::where('category_id', $id)->where('status', true)->latest()->paginate(12);
+        $category = Category::where('id', $id)->first();
+        return view('frontend.pages.category_wise_post', compact('all_data', 'category'));
     }
 }

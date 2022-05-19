@@ -592,11 +592,6 @@
                                 </div>
                                 @endif
                             </aside>
-                            {{-- <aside class="widget-banner mt-30">
-                                <a href="#">
-                                    <img src="{{ URL::to('frontend/assets/images/banner/sidebar-banner.png') }}" alt="" class="img-fluid" />
-                                </a>
-                            </aside> --}}
                         </div>
                     </div>
                 </div>

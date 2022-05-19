@@ -41,7 +41,7 @@ class PostController extends Controller
         if($request->hasFile('image')){
             $image = $request->file('image');
             $image_unique_name = md5(time().rand()) . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(770, 400)->save('upload/post/'. $image_unique_name);
+            Image::make($image)->resize(770, 350)->save('upload/post/'. $image_unique_name);
             $save_url_i = 'upload/post/'.$image_unique_name;
         }
 
@@ -56,7 +56,8 @@ class PostController extends Controller
             'title_slug' => $this->getSlug($request->title_en),
             'image' => $save_url_i,
             'details_en' => $request->details_en,
-            'details_ar' => $request->details_ar
+            'details_ar' => $request->details_ar,
+            'date' => date('d-m-Y'),
         ]);
 
         $notification = [
@@ -96,7 +97,7 @@ class PostController extends Controller
                     unlink($data -> image);
                 }
                 $image_unique_name = md5(time().rand()) . '.' . $image->getClientOriginalExtension();
-                Image::make($image)->resize(770, 400)->save('upload/post/'. $image_unique_name);
+                Image::make($image)->resize(770, 350)->save('upload/post/'. $image_unique_name);
                 $save_url_i = 'upload/post/'.$image_unique_name;
             }else {
                 $save_url_i = $data->image;
@@ -112,6 +113,7 @@ class PostController extends Controller
              $data->image = $save_url_i;
              $data->details_en = $request->details_en;
              $data->details_ar = $request->details_ar;
+             $data->date = date('d-m-Y');
              $data->update();
 
             $notification = [
