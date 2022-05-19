@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\DestinationController;
 use App\Http\Controllers\Backend\DistrictController;
 use App\Http\Controllers\Backend\HeroSliderController;
 use App\Http\Controllers\Backend\PackageController;
+use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\SocialLinkController;
 use App\Http\Controllers\Backend\TagController;
 use App\Http\Controllers\Backend\TourGuideController;
@@ -197,6 +198,20 @@ Route::middleware([
         Route::get('/edit/{id}', [TagController::class, 'edit'])->name('tag.edit');
         Route::put('/update/{id}', [TagController::class, 'update'])->name('tag.update');
         Route::get('/delete/{id}', [TagController::class, 'delete'])->name('tag.delete');
+    });
+
+
+    // Posts Routes
+    Route::prefix('posts')->group(function () {
+        Route::get('/list', [PostController::class, 'list'])->name('post.list');
+        Route::get('/add', [PostController::class, 'add'])->name('post.add');
+        Route::post('/store', [PostController::class, 'store'])->name('post.store');
+        Route::get('/edit/{id}', [PostController::class, 'edit'])->name('post.edit');
+        Route::put('/update/{id}', [PostController::class, 'update'])->name('post.update');
+        Route::get('/delete/{id}', [PostController::class, 'delete'])->name('post.delete');
+        Route::get('/inactive/{id}', [PostController::class, 'postInactive'])->name('post.inactive');
+        Route::get('/active/{id}', [PostController::class, 'postActive'])->name('post.active');
+        Route::get('/view/{id}', [PostController::class, 'postView'])->name('post.view');
     });
 
 

@@ -79,6 +79,20 @@
         </li>
 
         <li class="treeview">
+            <a href="#">
+              <i data-feather="hard-drive"></i>
+              <span>Post</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-right pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="{{ route('post.list') }}"><i class="ti-more"></i>All Post</a></li>
+                <li><a href="{{ route('post.add') }}"><i class="ti-more"></i>Add Post</a></li>
+            </ul>
+        </li>
+
+        <li class="treeview">
           <a href="#">
             <i class="ti-settings"></i>
             <span>Settings</span>
