@@ -41,6 +41,8 @@ Route::get('/holiday-packages', [SettingsController::class, 'allHolidayPackages'
 Route::get('/destination-details/{slug}', [SettingsController::class, 'destinationDetails'])->name('destination-details');
 Route::get('/category-wise-destination/{id}/{name}', [SettingsController::class, 'categoryWiseDestination'])->name('category.wise.destination');
 Route::post('/search-wise-destination', [SettingsController::class, 'searchWiseDestination'])->name('search.wise.destination');
+// Category wise package
+Route::get('/category-wise-package/{id}/{name}', [SettingsController::class, 'categoryWisePackage'])->name('category.wise.package');
 
 //Hearder
 Route::get('/blogs', [SettingsController::class, 'posts'])->name('all.blogs');

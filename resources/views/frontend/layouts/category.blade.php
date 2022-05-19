@@ -16,7 +16,7 @@
         <div class="row row-cols-lg-3 row-cols-2 gy-5 mt-3">
             @foreach($all_data as $data)
             <div class="col">
-                <a class="category-box" href="package.html">
+                <a class="category-box" href="{{ asset('/category-wise-package/'.$data->id.'/'.$data->name_en) }}">
                     <div class="cate-icon mx-auto">
                         <img src="{{ URL::to('/') }}/upload/category/{{ $data->image }}" alt="" />
                     </div>

@@ -169,6 +169,15 @@ class SettingsController extends Controller
         return view('frontend.pages.tag_wise_post', compact('all_data', 'tag'));
     }
 
+    /**
+     * Category Wise Post
+     */
+    public function categoryWisePackage($id){
+        $all_data = Package::where('category_id', $id)->where('status', true)->latest()->paginate(12);
+        $category = Category::where('id', $id)->first();
+        return view('frontend.pages.category_wise_package', compact('all_data', 'category'));
+    }
+
 
     //============== Header ===============//
     /**

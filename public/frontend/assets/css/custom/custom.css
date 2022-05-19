@@ -60,3 +60,10 @@
     -webkit-transition: all .3s;
     transition: all .3s;
 }
+
+.package-card-alpha .package-thumb img {
+    width: 100%;
+    height: 242px;
+    -webkit-transition: all .35s;
+    transition: all .35s;
+}
