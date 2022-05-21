@@ -143,7 +143,7 @@
                 <div class="col-lg-4 col-md-6 order-lg-3 order-2">
                     <div class="policy-links">
                         <ul class="policy-list justify-content-lg-end justify-content-center">
-                            <li><a href="#">Terms & Condition</a></li>
+                            <li><a href="{{ route('terms.condition') }}">Terms & Condition</a></li>
                             <li><a href="#">Privacy Policy</a></li>
                         </ul>
                     </div>

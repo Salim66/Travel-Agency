@@ -18,6 +18,7 @@ use App\Http\Controllers\Backend\ReviewerController;
 use App\Http\Controllers\Backend\SeoController;
 use App\Http\Controllers\Backend\SocialLinkController;
 use App\Http\Controllers\Backend\TagController;
+use App\Http\Controllers\Backend\TermsController;
 use App\Http\Controllers\Backend\TourGuideController;
 use App\Http\Controllers\Backend\TravelGalleryController;
 
@@ -45,6 +46,7 @@ Route::get('/destination-details/{slug}', [SettingsController::class, 'destinati
 Route::get('/category-wise-destination/{id}/{name}', [SettingsController::class, 'categoryWiseDestination'])->name('category.wise.destination');
 Route::post('/search-wise-destination', [SettingsController::class, 'searchWiseDestination'])->name('search.wise.destination');
 Route::get('/about-us', [SettingsController::class, 'aboutUs'])->name('about-us');
+Route::get('/terms-condition', [SettingsController::class, 'termsAndCondition'])->name('terms.condition');
 // Category wise package
 Route::get('/category-wise-package/{id}/{name}', [SettingsController::class, 'categoryWisePackage'])->name('category.wise.package');
 
@@ -262,6 +264,16 @@ Route::middleware([
         Route::get('/delete/{id}', [ReviewerController::class, 'delete'])->name('reviewer.delete');
         Route::get('/inactive/{id}', [ReviewerController::class, 'reviewerInactive'])->name('reviewer.inactive');
         Route::get('/active/{id}', [ReviewerController::class, 'reviewerActive'])->name('reviewer.active');
+    });
+
+
+    // Terms & Conditions Routes
+    Route::prefix('terms')->group(function () {
+        Route::get('/list', [TermsController::class, 'list'])->name('term.list');
+        Route::post('/store', [TermsController::class, 'store'])->name('term.store');
+        Route::get('/edit/{id}', [TermsController::class, 'edit'])->name('term.edit');
+        Route::put('/update/{id}', [TermsController::class, 'update'])->name('term.update');
+        Route::get('/delete/{id}', [TermsController::class, 'delete'])->name('term.delete');
     });
 
 });

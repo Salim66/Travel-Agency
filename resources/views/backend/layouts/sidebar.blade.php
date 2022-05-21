@@ -106,6 +106,7 @@
             <li><a href="{{ route('banner.list') }}"><i class="ti-more"></i>Hero Banner</a></li>
             <li><a href="{{ route('seo.list') }}"><i class="ti-more"></i>SEO</a></li>
             <li><a href="{{ route('about.edit') }}"><i class="ti-more"></i>About Us</a></li>
+            <li><a href="{{ route('term.list') }}"><i class="ti-more"></i>Terms & Condition</a></li>
           </ul>
         </li>
 

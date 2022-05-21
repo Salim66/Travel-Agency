@@ -12,6 +12,7 @@ use App\Models\ContactForm;
 use App\Models\Destination;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Terms;
 
 class SettingsController extends Controller
 {
@@ -28,6 +29,14 @@ class SettingsController extends Controller
     public function aboutUs(){
         $data = About::findOrFail(1);
         return view('frontend.pages.about_us', compact('data'));
+    }
+
+    /**
+     * Terms Condition Page load
+     */
+    public function termsAndCondition(){
+        $all_data = Terms::all();
+        return view('frontend.pages.terms_condition', compact('all_data'));
     }
 
     /**
