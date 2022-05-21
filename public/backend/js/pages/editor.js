@@ -153,3 +153,36 @@ $(function () {
 
   });
 
+  $(function () {
+    "use strict";
+
+    // Replace the <textarea id="editor1"> with a CKEditor
+	// instance, using default configuration.
+	CKEDITOR.replace('editor15')
+	//bootstrap WYSIHTML5 - text editor
+	$('.textarea').wysihtml5();
+
+  });
+
+  $(function () {
+    "use strict";
+
+    // Replace the <textarea id="editor1"> with a CKEditor
+	// instance, using default configuration.
+	CKEDITOR.replace('editor16')
+	//bootstrap WYSIHTML5 - text editor
+	$('.textarea').wysihtml5();
+
+  });
+
+  $(function () {
+    "use strict";
+
+    // Replace the <textarea id="editor1"> with a CKEditor
+	// instance, using default configuration.
+	CKEDITOR.replace('editor17')
+	//bootstrap WYSIHTML5 - text editor
+	$('.textarea').wysihtml5();
+
+  });
+

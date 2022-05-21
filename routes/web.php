@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\BookingPackageController;
 use App\Http\Controllers\Backend\CategoryController;
 use Illuminate\Support\Facades\Route;
@@ -102,6 +103,12 @@ Route::middleware([
         Route::get('/list', [SeoController::class, 'index'])->name('seo.list');
         Route::get('/edit/{id}', [SeoController::class, 'edit'])->name('seo.edit');
         Route::put('/update/{id}', [SeoController::class, 'update'])->name('seo.update');
+    });
+
+    // About Us Routes
+    Route::prefix('abouts')->group(function () {
+        Route::get('/edit', [AboutController::class, 'edit'])->name('about.edit');
+        Route::put('/update/{id}', [AboutController::class, 'update'])->name('about.update');
     });
 
     // All Contacts Form Routes

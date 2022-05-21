@@ -92,11 +92,32 @@
             $('.favicon_image_preview').attr('src', imageURL);
         });
 
-        // Favicon Image Preview
+        // Reviewer Image Preview
         $('#reviewer_image_load').change(function(e){
             e.preventDefault();
             let imageURL = URL.createObjectURL(e.target.files[0]);
             $('.reviewer_image_preview').attr('src', imageURL);
+        });
+
+        // About Image Preview
+        $('#ione_image_load').change(function(e){
+            e.preventDefault();
+            let imageURL = URL.createObjectURL(e.target.files[0]);
+            $('.ione_image_preview').attr('src', imageURL);
+        });
+
+        // About Image Preview
+        $('#itwo_image_load').change(function(e){
+            e.preventDefault();
+            let imageURL = URL.createObjectURL(e.target.files[0]);
+            $('.itwo_image_preview').attr('src', imageURL);
+        });
+
+        // About Image Preview
+        $('#ithree_image_load').change(function(e){
+            e.preventDefault();
+            let imageURL = URL.createObjectURL(e.target.files[0]);
+            $('.ithree_image_preview').attr('src', imageURL);
         });
 
 

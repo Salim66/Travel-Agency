@@ -105,6 +105,7 @@
             <li><a href="{{ route('social.link') }}"><i class="ti-more"></i>Social Link</a></li>
             <li><a href="{{ route('banner.list') }}"><i class="ti-more"></i>Hero Banner</a></li>
             <li><a href="{{ route('seo.list') }}"><i class="ti-more"></i>SEO</a></li>
+            <li><a href="{{ route('about.edit') }}"><i class="ti-more"></i>About Us</a></li>
           </ul>
         </li>
 
