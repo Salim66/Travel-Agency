@@ -12,6 +12,7 @@ use App\Models\ContactForm;
 use App\Models\Destination;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Policy;
 use App\Models\Terms;
 
 class SettingsController extends Controller
@@ -37,6 +38,14 @@ class SettingsController extends Controller
     public function termsAndCondition(){
         $all_data = Terms::all();
         return view('frontend.pages.terms_condition', compact('all_data'));
+    }
+
+    /**
+     * Privacy Policy Page load
+     */
+    public function privacyPolicy(){
+        $all_data = Policy::all();
+        return view('frontend.pages.privacy_policy', compact('all_data'));
     }
 
     /**

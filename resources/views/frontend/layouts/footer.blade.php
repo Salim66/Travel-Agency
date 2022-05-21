@@ -142,10 +142,17 @@
                 </div>
                 <div class="col-lg-4 col-md-6 order-lg-3 order-2">
                     <div class="policy-links">
+                        @if(session()->get('language') == 'arabic')
+                        <ul class="policy-list justify-content-lg-end justify-content-center">
+                            <li><a href="{{ route('terms.condition') }}">الشروط والأحكام</a></li>
+                            <li><a href="{{ route('privacy.policy') }}">سياسة الخصوصية</a></li>
+                        </ul>
+                        @else
                         <ul class="policy-list justify-content-lg-end justify-content-center">
                             <li><a href="{{ route('terms.condition') }}">Terms & Condition</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="{{ route('privacy.policy') }}">Privacy Policy</a></li>
                         </ul>
+                        @endif
                     </div>
                 </div>
             </div>

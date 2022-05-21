@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\DestinationController;
 use App\Http\Controllers\Backend\DistrictController;
 use App\Http\Controllers\Backend\HeroSliderController;
 use App\Http\Controllers\Backend\PackageController;
+use App\Http\Controllers\Backend\PolicyController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\ReviewerController;
 use App\Http\Controllers\Backend\SeoController;
@@ -47,6 +48,7 @@ Route::get('/category-wise-destination/{id}/{name}', [SettingsController::class,
 Route::post('/search-wise-destination', [SettingsController::class, 'searchWiseDestination'])->name('search.wise.destination');
 Route::get('/about-us', [SettingsController::class, 'aboutUs'])->name('about-us');
 Route::get('/terms-condition', [SettingsController::class, 'termsAndCondition'])->name('terms.condition');
+Route::get('/privacy-policy', [SettingsController::class, 'privacyPolicy'])->name('privacy.policy');
 // Category wise package
 Route::get('/category-wise-package/{id}/{name}', [SettingsController::class, 'categoryWisePackage'])->name('category.wise.package');
 
@@ -266,7 +268,6 @@ Route::middleware([
         Route::get('/active/{id}', [ReviewerController::class, 'reviewerActive'])->name('reviewer.active');
     });
 
-
     // Terms & Conditions Routes
     Route::prefix('terms')->group(function () {
         Route::get('/list', [TermsController::class, 'list'])->name('term.list');
@@ -274,6 +275,15 @@ Route::middleware([
         Route::get('/edit/{id}', [TermsController::class, 'edit'])->name('term.edit');
         Route::put('/update/{id}', [TermsController::class, 'update'])->name('term.update');
         Route::get('/delete/{id}', [TermsController::class, 'delete'])->name('term.delete');
+    });
+
+    // Privacy Policy Routes
+    Route::prefix('policies')->group(function () {
+        Route::get('/list', [PolicyController::class, 'list'])->name('policy.list');
+        Route::post('/store', [PolicyController::class, 'store'])->name('policy.store');
+        Route::get('/edit/{id}', [PolicyController::class, 'edit'])->name('policy.edit');
+        Route::put('/update/{id}', [PolicyController::class, 'update'])->name('policy.update');
+        Route::get('/delete/{id}', [PolicyController::class, 'delete'])->name('policy.delete');
     });
 
 });
