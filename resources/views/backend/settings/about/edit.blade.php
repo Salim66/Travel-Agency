@@ -52,9 +52,17 @@
                                 <div class="row"> <!-- start 8th row -->
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <h5>Description <span class="text-danger"></span></h5>
+                                            <h5>Description English <span class="text-danger"></span></h5>
                                             <div class="controls">
-                                                <textarea name="description" id="editor15" class="form-control">{{ $data->description }}</textarea>
+                                                <textarea name="description_en" id="editor15" class="form-control">{{ $data->description_en }}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <h5>Description Arabic <span class="text-danger"></span></h5>
+                                            <div class="controls">
+                                                <textarea name="description_ar" id="editor16" class="form-control">{{ $data->description_ar }}</textarea>
                                             </div>
                                         </div>
                                     </div>

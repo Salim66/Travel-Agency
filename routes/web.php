@@ -44,6 +44,7 @@ Route::get('/holiday-packages', [SettingsController::class, 'allHolidayPackages'
 Route::get('/destination-details/{slug}', [SettingsController::class, 'destinationDetails'])->name('destination-details');
 Route::get('/category-wise-destination/{id}/{name}', [SettingsController::class, 'categoryWiseDestination'])->name('category.wise.destination');
 Route::post('/search-wise-destination', [SettingsController::class, 'searchWiseDestination'])->name('search.wise.destination');
+Route::get('/about-us', [SettingsController::class, 'aboutUs'])->name('about-us');
 // Category wise package
 Route::get('/category-wise-package/{id}/{name}', [SettingsController::class, 'categoryWisePackage'])->name('category.wise.package');
 
@@ -61,6 +62,7 @@ Route::get('/user-wise-posts/{id}/{name}', [SettingsController::class, 'userWise
 Route::post('/search-wise-post', [SettingsController::class, 'searchWisePost'])->name('search.box.wise.post');
 Route::get('/category-wise-post/{id}/{name}', [SettingsController::class, 'categoryWisePost'])->name('category.wise.post');
 Route::get('/tag-wise-post/{id}/{name}', [SettingsController::class, 'tagWisePost'])->name('tag.wise.post');
+
 
 //Post Details
 Route::get('/post-details/{slug}', [SettingsController::class, 'postDetails'])->name('blog-details');

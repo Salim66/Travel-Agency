@@ -120,7 +120,8 @@ class AboutController extends Controller
         $data->yours_experience = $request->yours_experience;
         $data->your_guide = $request->your_guide;
         $data->travelar_connect = $request->travelar_connect;
-        $data->description = $request->description;
+        $data->description_en = $request->description_en;
+        $data->description_ar = $request->description_ar;
         $data->update();
 
         $notification = [

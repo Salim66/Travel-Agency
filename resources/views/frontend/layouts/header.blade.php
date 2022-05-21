@@ -44,9 +44,9 @@
                             </li>
                             <li>
                                 @if(session()->get('language') == 'arabic')
-                                <a href="about.html">معلومات عنا</a>
+                                <a href="{{ route('about-us') }}">معلومات عنا</a>
                                 @else
-                                <a href="about.html">About Us</a>
+                                <a href="{{ route('about-us') }}">About Us</a>
                                 @endif
                             </li>
                             <li>

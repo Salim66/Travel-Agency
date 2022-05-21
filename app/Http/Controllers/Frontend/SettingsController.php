@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Tag;
 use App\Models\Post;
+use App\Models\About;
 use App\Models\Package;
 use App\Models\Category;
 use App\Models\BookPackage;
@@ -10,7 +12,6 @@ use App\Models\ContactForm;
 use App\Models\Destination;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Tag;
 
 class SettingsController extends Controller
 {
@@ -19,6 +20,14 @@ class SettingsController extends Controller
      */
     public function contactUs(){
         return view('frontend.pages.contact_us');
+    }
+
+    /**
+     * About Us Page load
+     */
+    public function aboutUs(){
+        $data = About::findOrFail(1);
+        return view('frontend.pages.about_us', compact('data'));
     }
 
     /**

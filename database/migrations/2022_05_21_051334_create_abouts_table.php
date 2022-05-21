@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('yours_experience');
             $table->string('your_guide');
             $table->string('travelar_connect');
-            $table->longText('description');
+            $table->longText('description_en');
+            $table->longText('description_ar');
             $table->timestamps();
         });
     }

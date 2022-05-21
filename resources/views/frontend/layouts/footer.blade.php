@@ -42,7 +42,7 @@
                         @if(session()->get('language') == 'arabic')
                         <h4 class="footer-widget-title">رابط سريع</h4>
                         <ul class="footer-links">
-                            <li><a href="about.html">معلومات عنا</a></li>
+                            <li><a href="{{ route('about-us') }}">معلومات عنا</a></li>
                             <li><a href="{{ route('all.package') }}">حزمة جولة</a></li>
                             <li><a href="{{ route('all.destination') }}">وجهة</a></li>
                             <li><a href="{{ route('all.blogs') }}">مدونة</a></li>
@@ -51,7 +51,7 @@
                         @else
                         <h4 class="footer-widget-title">Quick Link</h4>
                         <ul class="footer-links">
-                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="{{ route('about-us') }}">About Us</a></li>
                             <li><a href="{{ route('all.package') }}">Tour Package</a></li>
                             <li><a href="{{ route('all.destination') }}">Destination</a></li>
                             <li><a href="{{ route('all.blogs') }}">Blog</a></li>
