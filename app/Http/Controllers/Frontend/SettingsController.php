@@ -13,6 +13,7 @@ use App\Models\Destination;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Policy;
+use App\Models\Subscriber;
 use App\Models\Terms;
 
 class SettingsController extends Controller
@@ -242,5 +243,23 @@ class SettingsController extends Controller
         $all_data = Package::where('district_id', $district_id)->orWhere('category_id', $category_id)->orWhere('created_at', $date)->where('status', true)->get();
 
         return view('frontend.pages.header_search_package', compact('all_data'));
+    }
+
+    /**
+     * Subscriber Store
+     */
+    public function subscriberStore(Request $request){
+        $this->validate($request, [
+            'email' => 'required|email|unique:subscribers'
+        ]);
+
+        Subscriber::create($request->all());
+
+        $notification = [
+            'message' => 'You Successfully Added to our Subscriber List :)',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->back()->with($notification);
     }
 }

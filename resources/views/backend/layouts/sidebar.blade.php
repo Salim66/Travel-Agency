@@ -108,6 +108,7 @@
             <li><a href="{{ route('about.edit') }}"><i class="ti-more"></i>About Us</a></li>
             <li><a href="{{ route('term.list') }}"><i class="ti-more"></i>Terms & Condition</a></li>
             <li><a href="{{ route('policy.list') }}"><i class="ti-more"></i>Privacy Policy</a></li>
+            <li><a href="{{ route('subscirbe-s.edit') }}"><i class="ti-more"></i>Subscribe Section</a></li>
           </ul>
         </li>
 
@@ -211,6 +212,19 @@
 			<li><a href="{{ route('pending.package.booking') }}"><i class="ti-more"></i>Pending Package</a></li>
 			<li><a href="{{ route('completed.package.booking') }}"><i class="ti-more"></i>Completed Package</a></li>
 		  </ul>
+        </li>
+
+        <li class="treeview">
+            <a href="#">
+              <i data-feather="server"></i>
+              <span>Subscriber</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-right pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ route('subscriber.list') }}"><i class="ti-more"></i>Subscriber List</a></li>
+            </ul>
         </li>
 
 

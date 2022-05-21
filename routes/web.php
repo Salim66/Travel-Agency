@@ -18,6 +18,8 @@ use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\ReviewerController;
 use App\Http\Controllers\Backend\SeoController;
 use App\Http\Controllers\Backend\SocialLinkController;
+use App\Http\Controllers\Backend\SubscriberController;
+use App\Http\Controllers\Backend\SubscribeSectionController;
 use App\Http\Controllers\Backend\TagController;
 use App\Http\Controllers\Backend\TermsController;
 use App\Http\Controllers\Backend\TourGuideController;
@@ -54,6 +56,9 @@ Route::get('/category-wise-package/{id}/{name}', [SettingsController::class, 'ca
 
 // Header Panel Search Box Find Package
 Route::post('/search-package', [SettingsController::class, 'headerSearchPackage'])->name('header.search.package');
+
+// Subscriber Store
+Route::post('/subscriber-store', [SettingsController::class, 'subscriberStore'])->name('subscriber.store');
 
 //Hearder
 Route::get('/blogs', [SettingsController::class, 'posts'])->name('all.blogs');
@@ -115,6 +120,12 @@ Route::middleware([
     Route::prefix('abouts')->group(function () {
         Route::get('/edit', [AboutController::class, 'edit'])->name('about.edit');
         Route::put('/update/{id}', [AboutController::class, 'update'])->name('about.update');
+    });
+
+    // Subscribe Section Routes
+    Route::prefix('subscribe-section')->group(function () {
+        Route::get('/edit', [SubscribeSectionController::class, 'edit'])->name('subscirbe-s.edit');
+        Route::put('/update/{id}', [SubscribeSectionController::class, 'update'])->name('subscirbe-s.update');
     });
 
     // All Contacts Form Routes
@@ -285,5 +296,12 @@ Route::middleware([
         Route::put('/update/{id}', [PolicyController::class, 'update'])->name('policy.update');
         Route::get('/delete/{id}', [PolicyController::class, 'delete'])->name('policy.delete');
     });
+
+    // Subscriber Routes
+    Route::prefix('subscribers')->group(function () {
+        Route::get('/list', [SubscriberController::class, 'list'])->name('subscriber.list');
+        Route::get('/delete/{id}', [SubscriberController::class, 'delete'])->name('subscriber.delete');
+    });
+
 
 });
