@@ -1,10 +1,13 @@
+@php
+    $seo = \App\Models\Seo::findOrFail(1);
+@endphp
 <header>
     <div class="header-area header-style-one">
         <div class="container">
             <div class="row">
                 <div class="col-xl-2 col-lg-12 col-md-12 col-sm-12 col-xs-12 align-items-center d-xl-flex d-lg-block">
                     <div class="nav-logo d-flex justify-content-between align-items-center">
-                        <a href="{{ asset('/') }}"><img src="{{ asset('frontend') }}/assets/images/logo.png" alt="logo" /></a>
+                        <a href="{{ asset('/') }}"><img src="{{ URL::to($seo->logo) }}" alt="logo" /></a>
                         <div class="d-flex align-items-center gap-4">
                             <div class="nav-right d-xl-none">
                                 <ul class="nav-actions">

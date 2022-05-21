@@ -1,3 +1,6 @@
+@php
+    $seo = \App\Models\Seo::findOrFail(1);
+@endphp
 <div class="footer-area mt-110">
     <div class="footer-main-wrapper">
         <div class="footer-vactor">
@@ -7,7 +10,7 @@
             <div class="row justify-content-center g-4">
                 <div class="col-lg-4">
                     <div class="footer-about text-lg-start text-center">
-                        <p>Duis rutrum nisl urna. Maecenas vel libero faucibus nisi venenatis hendrerit a id lectus. Suspendissendt molestie turpis nec lacinia vehicula.</p>
+                        <p>{{ $seo->footer_description }}</p>
 
                         @php
                             $social = \App\Models\SocialLink::findOrFail(1);
@@ -36,67 +39,91 @@
                 </div>
                 <div class="col-lg-2 col-md-4">
                     <div class="footer-widget">
+                        @if(session()->get('language') == 'arabic')
+                        <h4 class="footer-widget-title">رابط سريع</h4>
+                        <ul class="footer-links">
+                            <li><a href="about.html">معلومات عنا</a></li>
+                            <li><a href="{{ route('all.package') }}">حزمة جولة</a></li>
+                            <li><a href="{{ route('all.destination') }}">وجهة</a></li>
+                            <li><a href="{{ route('all.blogs') }}">مدونة</a></li>
+                            <li><a href="{{ route('contact-us') }}">اتصل بنا</a></li>
+                        </ul>
+                        @else
                         <h4 class="footer-widget-title">Quick Link</h4>
                         <ul class="footer-links">
                             <li><a href="about.html">About Us</a></li>
-                            <li><a href="package.html">Tour Package</a></li>
-                            <li><a href="destination.html">Destination</a></li>
-                            <li><a href="guide.html">Tour Guide</a></li>
-                            <li><a href="package-details.html">Booking Process</a></li>
-                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="{{ route('all.package') }}">Tour Package</a></li>
+                            <li><a href="{{ route('all.destination') }}">Destination</a></li>
+                            <li><a href="{{ route('all.blogs') }}">Blog</a></li>
+                            <li><a href="{{ route('contact-us') }}">Contact Us</a></li>
                         </ul>
+                        @endif
                     </div>
                 </div>
+                @php
+                    $all_data = \App\Models\Category::limit(5)->get();
+                @endphp
                 <div class="col-lg-2 col-md-4">
                     <div class="footer-widget">
+                        @if(session()->get('language') == 'arabic')
+                        <h4 class="footer-widget-title">نوع الجولة</h4>
+                        @else
                         <h4 class="footer-widget-title">Tour Type</h4>
+                        @endif
                         <ul class="footer-links">
-                            <li><a href="#">Wild & Adventure Tours</a></li>
-                            <li><a href="#">Group Tour</a></li>
-                            <li><a href="#">Seasonal Tours</a></li>
-                            <li><a href="#">Relaxation Tours</a></li>
-                            <li><a href="#">Family Friendly Tours</a></li>
+                            @foreach($all_data as $data)
+                            <li><a href="{{ asset('/category-wise-package/'.$data->id.'/'.$data->name_en) }}">
+                                @if(session()->get('language') == 'arabic')
+                                {{ $data->name_ar }}
+                                @else
+                                {{ $data->name_en }}
+                                @endif
+                            </a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
+                @php
+
+                    $all_gallery = \App\Models\TravelGallery::latest()->limit(6)->get();
+
+                @endphp
                 <div class="col-lg-4 col-md-8">
                     <div class="footer-widget">
+                        @if(session()->get('language') == 'arabic')
+                        <h4 class="footer-widget-title text-center">صالة عرض</h4>
+                        @else
                         <h4 class="footer-widget-title text-center">Gallery</h4>
+                        @endif
                         <div class="footer-gallary-grid">
+                            @foreach($all_gallery as $gallery)
                             <div class="footer-gallary-item">
-                                <a href="{{ asset('frontend') }}/assets/images/gallary/fg-1.png" data-fancybox="footer" data-caption="Caption Here"><img src="{{ asset('frontend') }}/assets/images/gallary/fg-1.png" alt="" /></a>
+                                <a href="{{ URL::to($gallery->image) }}" data-fancybox="footer" data-caption="Caption Here"><img src="{{ URL::to($gallery->image) }}" alt="" /></a>
                             </div>
-                            <div class="footer-gallary-item">
-                                <a href="{{ asset('frontend') }}/assets/images/gallary/fg-2.png" data-fancybox="footer" data-caption="Caption Here"><img src="{{ asset('frontend') }}/assets/images/gallary/fg-2.png" alt="" /></a>
-                            </div>
-                            <div class="footer-gallary-item">
-                                <a href="{{ asset('frontend') }}/assets/images/gallary/fg-3.png" data-fancybox="footer" data-caption="Caption Here"><img src="{{ asset('frontend') }}/assets/images/gallary/fg-3.png" alt="" /></a>
-                            </div>
-                            <div class="footer-gallary-item">
-                                <a href="{{ asset('frontend') }}/assets/images/gallary/fg-4.png" data-fancybox="footer" data-caption="Caption Here"><img src="{{ asset('frontend') }}/assets/images/gallary/fg-4.png" alt="" /></a>
-                            </div>
-                            <div class="footer-gallary-item">
-                                <a href="{{ asset('frontend') }}/assets/images/gallary/fg-5.png" data-fancybox="footer" data-caption="Caption Here"><img src="{{ asset('frontend') }}/assets/images/gallary/fg-5.png" alt="" /></a>
-                            </div>
-                            <div class="footer-gallary-item">
-                                <a href="{{ asset('frontend') }}/assets/images/gallary/fg-6.png" data-fancybox="footer" data-caption="Caption Here"><img src="{{ asset('frontend') }}/assets/images/gallary/fg-6.png" alt="" /></a>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
+            @php
+                $contact_info = \App\Models\ContactInfo::findOrFail(1);
+            @endphp
             <div class="footer-contact-wrapper">
+                @if(session()->get('language') == 'arabic')
+
+                @else
                 <h5>Contact Us:</h5>
                 <ul class="footer-contact-list">
-                    <li><i class="bi bi-telephone-x"></i> <a href="tel:+17632275032">+1 763-227-5032</a></li>
+                    <li><i class="bi bi-telephone-x"></i> <a href="tel:{{ $contact_info->phone }}">{{ $contact_info->phone }}</a></li>
                     <li>
                         <i class="bi bi-envelope-open"></i>
-                        <a href="https://demo.egenslab.com/cdn-cgi/l/email-protection#9cf5f2faf3dce8f3e9eee4eceef3b2fff3f1">
-                            <span class="__cf_email__" data-cfemail="771e19111837031802050f0705185914181a">[email&#160;protected]</span>
+                        <a href="mailto:{{ $contact_info->email }}">
+                            <span class="__cf_email__" data-cfemail="771e19111837031802050f0705185914181a">{{ $contact_info->email }}</span>
                         </a>
                     </li>
-                    <li><i class="bi bi-geo-alt"></i> <a href="#">2752 Willison Street Eagan, United State</a></li>
+                    <li><i class="bi bi-geo-alt"></i> <a href="{{ $contact_info->location }}">{{ $contact_info->location }}</a></li>
                 </ul>
+                @endif
             </div>
         </div>
     </div>
@@ -105,12 +132,12 @@
             <div class="row align-items-center justify-content-center">
                 <div class="col-lg-4 col-md-6 order-lg-1 order-3">
                     <div class="copyright-link text-lg-start text-center">
-                        <p>Copyright 2021 TourXPro | Design By <a href="#"> Egens Lab</a></p>
+                        <p>Copyright 2022 Anova Tours and Travels | Design By <a href="www.techdynobd.com"> TechDynoBD</a></p>
                     </div>
                 </div>
                 <div class="col-lg-4 order-lg-2 order-1">
                     <div class="footer-logo text-center">
-                        <a href="index.html"><img src="{{ asset('frontend') }}/assets/images/logo-w.png" alt="" /></a>
+                        <a href="index.html"><img src="{{ URL::to($seo->logo) }}" alt="" /></a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 order-lg-3 order-2">

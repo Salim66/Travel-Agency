@@ -104,6 +104,7 @@
             <li><a href="{{ route('contact.info') }}"><i class="ti-more"></i>Contact Info</a></li>
             <li><a href="{{ route('social.link') }}"><i class="ti-more"></i>Social Link</a></li>
             <li><a href="{{ route('banner.list') }}"><i class="ti-more"></i>Hero Banner</a></li>
+            <li><a href="{{ route('seo.list') }}"><i class="ti-more"></i>SEO</a></li>
           </ul>
         </li>
 
@@ -152,14 +153,13 @@
         <li class="treeview">
           <a href="#">
             <i data-feather="message-circle"></i>
-            <span>Application</span>
+            <span>Reviewer</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="chat.html"><i class="ti-more"></i>Chat</a></li>
-            <li><a href="calendar.html"><i class="ti-more"></i>Calendar</a></li>
+            <li><a href="{{ route('reviewer.list') }}"><i class="ti-more"></i>All Reviewer</a></li>
           </ul>
         </li>
 

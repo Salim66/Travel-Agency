@@ -67,3 +67,12 @@
     -webkit-transition: all .35s;
     transition: all .35s;
 }
+
+
+.testimonial-card-alpha .testimonial-card-top .testimonial-thumb img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    object-fit: cover;
+}

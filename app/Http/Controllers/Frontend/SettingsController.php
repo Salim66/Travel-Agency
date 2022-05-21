@@ -203,4 +203,17 @@ class SettingsController extends Controller
         $all_data = Destination::where('status', true)->latest()->paginate(12);
         return view('frontend.pages.all_destination', compact('all_data'));
     }
+
+    /**
+     * Search Package into Header Panel
+     */
+    public function headerSearchPackage(Request $request){
+        $district_id = $request->district_id;
+        $category_id = $request->category_id;
+        $person = $request->person;
+        $date = $request->date;
+        $all_data = Package::where('district_id', $district_id)->orWhere('category_id', $category_id)->orWhere('created_at', $date)->where('status', true)->get();
+
+        return view('frontend.pages.header_search_package', compact('all_data'));
+    }
 }

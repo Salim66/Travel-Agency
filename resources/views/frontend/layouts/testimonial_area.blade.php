@@ -4,8 +4,11 @@
         <div class="row align-items-center">
             <div class="col-lg-8">
                 <div class="section-head-alpha">
+                    @if(session()->get('language') == 'arabic')
+                    <h2>ماذا يقول عملائنا عنا</h2>
+                    @else
                     <h2>What Our Client Say About Us</h2>
-                    <p>Duis rutrum nisl urna. Maecenas vel libero faucibus nisi venenatis hendrerit a id lectus. Suspendissendt blandit interdum. Sed pellentesque at nunc eget consectetur.</p>
+                    @endif
                 </div>
             </div>
             <div class="col-lg-4">
@@ -17,90 +20,42 @@
         </div>
         <div class="swiper testimonial-slider-one position-relative">
             <div class="swiper-wrapper">
+                @php
+                    $i = 1;
+                    $all_data = \App\Models\Reviewer::where('status', true)->latest()->get();
+                @endphp
+                @foreach($all_data as $data)
                 <div class="swiper-slide">
                     <div class="testimonial-card testimonial-card-alpha">
                         <div class="testimonial-overlay-img">
-                            <img src="{{ asset('frontend') }}/assets/images/reviewer/reviewer-1.png" alt="" />
+                            <img src="{{ URL::to($data->image) }}" alt="" />
                         </div>
                         <div class="testimonial-card-top">
                             <div class="qoute-icon"><i class="bx bxs-quote-left"></i></div>
-                            <div class="testimonial-thumb"><img src="{{ asset('frontend') }}/assets/images/reviewer/r-sm1.png" alt="" /></div>
-                            <h3 class="testimonial-count">01</h3>
+                            <div class="testimonial-thumb"><img src="{{ URL::to($data->image) }}" alt="" /></div>
+                            <h3 class="testimonial-count">{{ $loop->index + 1 }}</h3>
                         </div>
                         <div class="testimonial-body">
-                            <p>Duis rutrum nisl urna. Maecenas vel libero this faucibus nisi venenatis hendrerit a id lectus.P Suspendissendt molestie turpis nec laciniane vehicula volutpat purus.</p>
+                            <p>{{ $data->message }}</p>
                             <div class="testimonial-bottom">
                                 <div class="reviewer-info">
-                                    <h4 class="reviewer-name">Shwan Pull</h4>
+                                    <h4 class="reviewer-name">{{ $data->name }}</h4>
+                                    @if(session()->get('language') == 'arabic')
+                                    <h6>المسافر</h6>
+                                    @else
                                     <h6>Traveller</h6>
+                                    @endif
                                 </div>
                                 <ul class="testimonial-rating">
+                                    @for($i=0; $i<$data->rating; $i++)
                                     <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
+                                    @endfor
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="testimonial-card testimonial-card-alpha">
-                        <div class="testimonial-overlay-img">
-                            <img src="{{ asset('frontend') }}/assets/images/reviewer/reviewer-1.png" alt="" />
-                        </div>
-                        <div class="testimonial-card-top">
-                            <div class="qoute-icon"><i class="bx bxs-quote-left"></i></div>
-                            <div class="testimonial-thumb"><img src="{{ asset('frontend') }}/assets/images/reviewer/r-sm2.png" alt="" /></div>
-                            <h3 class="testimonial-count">02</h3>
-                        </div>
-                        <div class="testimonial-body">
-                            <p>Duis rutrum nisl urna. Maecenas vel libero this faucibus nisi venenatis hendrerit a id lectus.P Suspendissendt molestie turpis nec laciniane vehicula volutpat purus.</p>
-                            <div class="testimonial-bottom">
-                                <div class="reviewer-info">
-                                    <h4 class="reviewer-name">Adam Groff</h4>
-                                    <h6>Traveller</h6>
-                                </div>
-                                <ul class="testimonial-rating">
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="testimonial-card testimonial-card-alpha">
-                        <div class="testimonial-overlay-img">
-                            <img src="{{ asset('frontend') }}/assets/images/reviewer/reviewer-1.png" alt="" />
-                        </div>
-                        <div class="testimonial-card-top">
-                            <div class="qoute-icon"><i class="bx bxs-quote-left"></i></div>
-                            <div class="testimonial-thumb"><img src="{{ asset('frontend') }}/assets/images/reviewer/r-sm3.png" alt="" /></div>
-                            <h3 class="testimonial-count">03</h3>
-                        </div>
-                        <div class="testimonial-body">
-                            <p>Duis rutrum nisl urna. Maecenas vel libero this faucibus nisi venenatis hendrerit a id lectus.P Suspendissendt molestie turpis nec laciniane vehicula volutpat purus.</p>
-                            <div class="testimonial-bottom">
-                                <div class="reviewer-info">
-                                    <h4 class="reviewer-name">Lilyan Danclark</h4>
-                                    <h6>Traveller</h6>
-                                </div>
-                                <ul class="testimonial-rating">
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

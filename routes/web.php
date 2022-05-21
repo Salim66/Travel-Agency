@@ -13,6 +13,8 @@ use App\Http\Controllers\Backend\DistrictController;
 use App\Http\Controllers\Backend\HeroSliderController;
 use App\Http\Controllers\Backend\PackageController;
 use App\Http\Controllers\Backend\PostController;
+use App\Http\Controllers\Backend\ReviewerController;
+use App\Http\Controllers\Backend\SeoController;
 use App\Http\Controllers\Backend\SocialLinkController;
 use App\Http\Controllers\Backend\TagController;
 use App\Http\Controllers\Backend\TourGuideController;
@@ -43,6 +45,9 @@ Route::get('/category-wise-destination/{id}/{name}', [SettingsController::class,
 Route::post('/search-wise-destination', [SettingsController::class, 'searchWiseDestination'])->name('search.wise.destination');
 // Category wise package
 Route::get('/category-wise-package/{id}/{name}', [SettingsController::class, 'categoryWisePackage'])->name('category.wise.package');
+
+// Header Panel Search Box Find Package
+Route::post('/search-package', [SettingsController::class, 'headerSearchPackage'])->name('header.search.package');
 
 //Hearder
 Route::get('/blogs', [SettingsController::class, 'posts'])->name('all.blogs');
@@ -90,6 +95,13 @@ Route::middleware([
         Route::get('/list', [ContactInfoController::class, 'index'])->name('contact.info');
         Route::get('/edit/{id}', [ContactInfoController::class, 'edit'])->name('contact-info.edit');
         Route::put('/update/{id}', [ContactInfoController::class, 'update'])->name('contact-info.update');
+    });
+
+    // SEO Routes
+    Route::prefix('seos')->group(function () {
+        Route::get('/list', [SeoController::class, 'index'])->name('seo.list');
+        Route::get('/edit/{id}', [SeoController::class, 'edit'])->name('seo.edit');
+        Route::put('/update/{id}', [SeoController::class, 'update'])->name('seo.update');
     });
 
     // All Contacts Form Routes
@@ -231,5 +243,16 @@ Route::middleware([
         Route::get('/view/{id}', [PostController::class, 'postView'])->name('post.view');
     });
 
+
+    // Reviewer Routes
+    Route::prefix('reviewers')->group(function () {
+        Route::get('/list', [ReviewerController::class, 'list'])->name('reviewer.list');
+        Route::post('/store', [ReviewerController::class, 'store'])->name('reviewer.store');
+        Route::get('/edit/{id}', [ReviewerController::class, 'edit'])->name('reviewer.edit');
+        Route::put('/update/{id}', [ReviewerController::class, 'update'])->name('reviewer.update');
+        Route::get('/delete/{id}', [ReviewerController::class, 'delete'])->name('reviewer.delete');
+        Route::get('/inactive/{id}', [ReviewerController::class, 'reviewerInactive'])->name('reviewer.inactive');
+        Route::get('/active/{id}', [ReviewerController::class, 'reviewerActive'])->name('reviewer.active');
+    });
 
 });
