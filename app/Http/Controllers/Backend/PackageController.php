@@ -7,9 +7,12 @@ use App\Models\Country;
 use App\Models\Package;
 use App\Models\Category;
 use App\Models\District;
+use App\Models\Subscriber;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Notifications\NewPackageNotify;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 class PackageController extends Controller
 {
@@ -73,7 +76,7 @@ class PackageController extends Controller
             }
         }
 
-        Package::create([
+        $data = Package::create([
             'user_id' => Auth::user()->id,
             'category_id' => $request->category_id,
             'country_id' => $request->country_id,
@@ -107,6 +110,14 @@ class PackageController extends Controller
             'package_location_link' => $request->package_location_link,
             'package_holiday_offer' => $request->package_holiday_offer
         ]);
+
+        // Subscriber User Notification new package
+        // $subscribers = Subscriber::all();
+        //     foreach ($subscribers as $subscriber)
+        // {
+        //     Notification::route('mail',$subscriber->email)
+        //         ->notify(new NewPackageNotify($data));
+        // }
 
         $notification = [
             'message' => 'Package Added Successfully',
