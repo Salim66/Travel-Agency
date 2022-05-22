@@ -154,9 +154,9 @@
                                         </ul>
                                     </div>
                                     @if(session()->get('language') == 'arabic')
-                                    <h2 class="pd-title">جسر البوابة الذهبية في سان فرانسيسكو.</h2>
+                                    <h2 class="pd-title">{{ $data->package_title_ar }}</h2>
                                     @else
-                                    <h2 class="pd-title">San Francisco Golden Gate Bridge.</h2>
+                                    <h2 class="pd-title">{{ $data->package_title_en }}</h2>
                                     @endif
                                 </div>
                             </div>

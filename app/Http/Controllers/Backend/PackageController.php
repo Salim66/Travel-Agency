@@ -112,12 +112,12 @@ class PackageController extends Controller
         ]);
 
         // Subscriber User Notification new package
-        // $subscribers = Subscriber::all();
-        //     foreach ($subscribers as $subscriber)
-        // {
-        //     Notification::route('mail',$subscriber->email)
-        //         ->notify(new NewPackageNotify($data));
-        // }
+        $subscribers = Subscriber::all();
+            foreach ($subscribers as $subscriber)
+        {
+            Notification::route('mail',$subscriber->email)
+                ->notify(new NewPackageNotify($data));
+        }
 
         $notification = [
             'message' => 'Package Added Successfully',

@@ -76,3 +76,34 @@
     border: 1px solid #fff;
     object-fit: cover;
 }
+
+.tour-package-details .package-info-tab p {
+    font-size: 16px;
+    line-height: 30px;
+    color: #666;
+    padding-top: 15px;
+    text-align: justify;
+}
+
+.destination-details .dd-body p {
+    font-size: 16px;
+    line-height: 28px;
+    color: #666;
+    margin-top: 15px;
+    text-align: justify;
+}
+
+.blog-details .post-body p {
+    font-size: 16px;
+    line-height: 30px;
+    color: #666;
+    margin-top: 20px;
+    text-align: justify;
+}
+
+.about-main-wrappper .about-tab-wrap .about-tab-content .tab-pane p {
+    font-size: 16px;
+    line-height: 30px;
+    color: #666;
+    text-align: justify;
+}

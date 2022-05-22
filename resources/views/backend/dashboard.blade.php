@@ -8,84 +8,109 @@
       <!-- Main content -->
       <section class="content">
           <div class="row">
+              @if(Auth::user()->packages == 1)
+              @php
+                  $pack_count = \App\Models\Package::count();
+              @endphp
               <div class="col-xl-2 col-6">
                   <div class="box overflow-hidden pull-up">
                       <div class="box-body">
-                          <div class="icon bg-primary-light rounded w-60 h-60">
-                              <i class="text-primary mr-0 font-size-24 mdi mdi-account-multiple"></i>
-                          </div>
                           <div>
-                              <p class="text-mute mt-20 mb-0 font-size-16">New Customers</p>
-                              <h3 class="text-white mb-0 font-weight-500">3400 <small class="text-success"><i class="fa fa-caret-up"></i> +2.5%</small></h3>
+                              <p class="text-mute mt-20 mb-0 font-size-16">Packages</p>
+                              <h3 class="text-white mb-0 font-weight-500">{{ $pack_count }}</h3>
                           </div>
                       </div>
                   </div>
               </div>
+              @else    
+              @endif
+
+              @if(Auth::user()->post == 1)
+              @php
+                  $post_count = \App\Models\Post::count();
+              @endphp
               <div class="col-xl-2 col-6">
                   <div class="box overflow-hidden pull-up">
                       <div class="box-body">
-                          <div class="icon bg-warning-light rounded w-60 h-60">
-                              <i class="text-warning mr-0 font-size-24 mdi mdi-car"></i>
-                          </div>
                           <div>
-                              <p class="text-mute mt-20 mb-0 font-size-16">Sold Cars</p>
-                              <h3 class="text-white mb-0 font-weight-500">3400 <small class="text-success"><i class="fa fa-caret-up"></i> +2.5%</small></h3>
+                              <p class="text-mute mt-20 mb-0 font-size-16">Posts</p>
+                              <h3 class="text-white mb-0 font-weight-500">{{ $post_count }} </h3>
                           </div>
                       </div>
                   </div>
               </div>
+              @else    
+              @endif
+
+              @if(Auth::user()->destination == 1)
+              @php
+                $desti_count = \App\Models\Destination::count();
+              @endphp
               <div class="col-xl-2 col-6">
                   <div class="box overflow-hidden pull-up">
                       <div class="box-body">
-                          <div class="icon bg-info-light rounded w-60 h-60">
-                              <i class="text-info mr-0 font-size-24 mdi mdi-sale"></i>
-                          </div>
                           <div>
-                              <p class="text-mute mt-20 mb-0 font-size-16">Sales Lost</p>
-                              <h3 class="text-white mb-0 font-weight-500">$1,250 <small class="text-danger"><i class="fa fa-caret-down"></i> -0.5%</small></h3>
+                              <p class="text-mute mt-20 mb-0 font-size-16">Destinations</p>
+                              <h3 class="text-white mb-0 font-weight-500">{{ $desti_count }} </h3>
                           </div>
                       </div>
                   </div>
               </div>
+              @else    
+              @endif
+
+              @if(Auth::user()->contact_us == 1)
+              @php
+                $cont_count = \App\Models\ContactForm::count();
+              @endphp
               <div class="col-xl-2 col-6">
                   <div class="box overflow-hidden pull-up">
                       <div class="box-body">
-                          <div class="icon bg-danger-light rounded w-60 h-60">
-                              <i class="text-danger mr-0 font-size-24 mdi mdi-phone-incoming"></i>
-                          </div>
                           <div>
-                              <p class="text-mute mt-20 mb-0 font-size-16">Inbound Call</p>
-                              <h3 class="text-white mb-0 font-weight-500">1,460 <small class="text-danger"><i class="fa fa-caret-up"></i> -1.5%</small></h3>
+                              <p class="text-mute mt-20 mb-0 font-size-16">Contact Us</p>
+                              <h3 class="text-white mb-0 font-weight-500">{{ $cont_count }} </h3>
                           </div>
                       </div>
                   </div>
               </div>
+              @else    
+              @endif
+
+              @if(Auth::user()->booking_package == 1)
+              @php
+                $book_p_count = \App\Models\BookPackage::count();
+              @endphp
               <div class="col-xl-2 col-6">
                   <div class="box overflow-hidden pull-up">
                       <div class="box-body">
-                          <div class="icon bg-success-light rounded w-60 h-60">
-                              <i class="text-success mr-0 font-size-24 mdi mdi-phone-outgoing"></i>
-                          </div>
                           <div>
-                              <p class="text-mute mt-20 mb-0 font-size-16">Outbound Call</p>
-                              <h3 class="text-white mb-0 font-weight-500">1,700 <small class="text-success"><i class="fa fa-caret-up"></i> +0.5%</small></h3>
+                              <p class="text-mute mt-20 mb-0 font-size-16">Booking Packages</p>
+                              <h3 class="text-white mb-0 font-weight-500">{{ $book_p_count }} </h3>
                           </div>
                       </div>
                   </div>
               </div>
+              @else    
+              @endif
+
+
+              @if(Auth::user()->subscriber == 1)
+              @php
+                $Subs_count = \App\Models\Subscriber::count();
+              @endphp
               <div class="col-xl-2 col-6">
                   <div class="box overflow-hidden pull-up">
                       <div class="box-body">
-                          <div class="icon bg-light rounded w-60 h-60">
-                              <i class="text-white mr-0 font-size-24 mdi mdi-chart-line"></i>
-                          </div>
                           <div>
-                              <p class="text-mute mt-20 mb-0 font-size-16">Total Revune</p>
-                              <h3 class="text-white mb-0 font-weight-500">$4,500k <small class="text-success"><i class="fa fa-caret-up"></i> +2.5%</small></h3>
+                              <p class="text-mute mt-20 mb-0 font-size-16">Subscribers</p>
+                              <h3 class="text-white mb-0 font-weight-500">{{ $Subs_count }} </h3>
                           </div>
                       </div>
                   </div>
               </div>
+              @else    
+              @endif
+
           </div>
       </section>
       <!-- /.content -->
