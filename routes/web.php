@@ -93,11 +93,7 @@ Route::get('/english/language', [LanguageController::class, 'english'])->name('e
 
 
 ////////////// Backend Routes //////////////
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
+Route::middleware(['auth'])->group(function () {
 
     Route::get('/dashboard', function () {
         return view('backend.dashboard');

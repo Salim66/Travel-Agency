@@ -852,4 +852,8 @@ body.dark-skin {
 .dark-skin .btn {
   color: #ffffff; }
 
+.bg-gradient-primary, .theme-primary .bg-gradient-primary, .theme-primary .art-bg {
+    background: linear-gradient(45deg, #0784BD, #7a15f7) !important;
+}
+
 /*# sourceMappingURL=skin_color.css.map */
