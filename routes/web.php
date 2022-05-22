@@ -24,6 +24,7 @@ use App\Http\Controllers\Backend\TagController;
 use App\Http\Controllers\Backend\TermsController;
 use App\Http\Controllers\Backend\TourGuideController;
 use App\Http\Controllers\Backend\TravelGalleryController;
+use App\Http\Controllers\Backend\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -101,6 +102,30 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('backend.dashboard');
     })->name('dashboard');
+
+
+    //Logout Routes
+    Route::get('/admin/logout', [UserController::class, 'adminLogout'])->name('admin.logout');
+
+    // User List Routes
+    Route::prefix('users')->group(function () {
+        Route::get('/list', [UserController::class, 'usersList'])->name('users.list');
+        Route::get('/create', [UserController::class, 'usersCreate'])->name('add.user');
+        Route::post('/store', [UserController::class, 'usersStore'])->name('store.user');
+        Route::get('/edit/{id}', [UserController::class, 'usersEdit'])->name('edit.user');
+        Route::patch('/update/{id}', [UserController::class, 'usersUpdate'])->name('update.user');
+        Route::get('/delete/{id}', [UserController::class, 'usersDelete'])->name('delete.user');
+
+        // User Profile
+        Route::get('/profile', [UserController::class, 'userProfile'])->name('user.profile');
+        Route::get('/profile/edit/{id}', [UserController::class, 'userProfileEdit'])->name('user.profile.edit');
+        Route::patch('/profile/update/{id}', [UserController::class, 'usersUpdateProfile'])->name('update.user.profile');
+
+        // User Change Password
+        Route::get('/change-password', [UserController::class, 'changePassword'])->name('user.change-password');
+        Route::patch('/password-update/{id}', [UserController::class, 'updatePassword'])->name('user.password-update');
+    });
+
 
     // Contact Info Routes
     Route::prefix('contact-info')->group(function () {

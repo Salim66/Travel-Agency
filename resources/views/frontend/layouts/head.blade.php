@@ -14,5 +14,6 @@
         {{ $seo->google_analytics }}
     </script>
 
+
     @include('frontend.layouts.partials.styles')
 </head>

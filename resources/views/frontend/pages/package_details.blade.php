@@ -1,6 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-    @include('frontend.layouts.head')
+    @php
+        $seo = \App\Models\Seo::findOrFail(1);
+    @endphp
+    <head>
+        <title>{{ $seo->meta_title }}</title>
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="{{ $seo->meta_description }}">
+        <meta name="keyword" content="{{ $seo->meta_keyword }}">
+        <meta name="author" content="{{ $seo->meta_author }}">
+        <!-- Google Analytics -->
+        <script>
+            {{ $seo->google_analytics }}
+        </script>
+
+        <!-- Share Button  -->
+        <meta property="og:title"
+        @if(session()->get('lang') == 'english')
+        content="{{ $data->package_title_en }}"
+        @else
+        content="{{ $data->package_title_ar }}" />
+        @endif
+
+        <meta property="og:url" content="http://www.anovatoursandtravels.com" />
+        <meta property="og:image" content="{{ URL::to($data->package_image) }}" />
+        <meta property="og:site_name" content="anovatoursandtravels" />
+        <!-- !Share Button  -->
+
+
+        @include('frontend.layouts.partials.styles')
+    </head>
     <body>
         @include('frontend.layouts.pre_loader')
 
@@ -365,6 +396,12 @@
                                                 </div>
                                             </div>
                                             @endif
+
+                                            <br>
+                                            <br>
+                                            <div class="post-footer flex-wrap flex-md-nowrap">
+                                                <div class="sharethis-inline-share-buttons"></div>
+                                            </div>
                                         </div>
                                         <div class="comment-section">
                                             <div id="disqus_thread"></div>

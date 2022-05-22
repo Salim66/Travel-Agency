@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/bootstrap.min.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 
+<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=621cb8f8b846610019d3dc86&product=inline-share-buttons" async="async"></script>
+
 <!-- Toastr CSS -->
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/toastr.min.css') }}">
 

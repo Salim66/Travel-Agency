@@ -120,6 +120,13 @@
             $('.ithree_image_preview').attr('src', imageURL);
         });
 
+        // User Image Preview
+        $('#user_image_load').change(function(e){
+            e.preventDefault();
+            let imageURL = URL.createObjectURL(e.target.files[0]);
+            $('.user_image_preview').attr('src', imageURL);
+        });
+
 
     });
 })(jQuery);
