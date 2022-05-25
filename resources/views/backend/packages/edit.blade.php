@@ -16,7 +16,7 @@
                    </div>
                    <!-- /.box-header -->
                    <div class="box-body">
-                       <div class="table-responsive">
+                       <div>
                             <form action="{{ route('package.update', $data->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
@@ -123,10 +123,21 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <h5>Package Amount <span class="text-danger">*</span></h5>
+                                            <h5>Package Amount <span class="text-danger">*</span><small>( For Adult )</small></h5>
                                             <div class="controls">
-                                                <input type="text" name="package_amount" class="form-control" value="{{ $data->package_amount }}">
-                                                @error('package_amount')
+                                                <input type="text" name="package_amount_adult" class="form-control" value="{{ $data->package_amount_adult }}">
+                                                @error('package_amount_adult')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <h5>Package Amount <small>( ( For Child ) )</small></h5>
+                                            <div class="controls">
+                                                <input type="text" name="package_amount_child" class="form-control" value="{{ $data->package_amount_child }}">
+                                                @error('package_amount_child')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>

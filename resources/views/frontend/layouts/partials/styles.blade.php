@@ -1,4 +1,7 @@
-<link rel="icon" href="{{ asset('frontend') }}/assets/images/favicon.png" type="image/gif" sizes="20x20" />
+@php
+    $seo = \App\Models\Seo::findOrFail(1);
+@endphp
+<link rel="icon" href="{{ URL::to($seo->favicon) }}" type="image/gif" sizes="20x20" />
 
 <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/select2.min.css" />
 

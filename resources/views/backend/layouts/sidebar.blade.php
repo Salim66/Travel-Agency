@@ -13,7 +13,7 @@
 				 <a href="{{ route('dashboard') }}">
 				  <!-- logo for regular state and mobile devices -->
 					 <div class="d-flex align-items-center justify-content-center">
-						  <img src="{{ URL::to('backend/') }}/images/logo-dark.png" alt="">
+						  <img src="{{ URL::to($seo->favicon) }}" alt="">
 						  <h3><b>Anova</b> Admin</h3>
 					 </div>
 				</a>

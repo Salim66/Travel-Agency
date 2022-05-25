@@ -6,6 +6,10 @@
 <script src="{{ asset('/') }}/../assets/vendor_components/apexcharts-bundle/irregular-data-series.js"></script>
 <script src="{{ asset('/') }}/../assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
 
+<!-- Data Table --->
+<script src="{{ asset('../assets/vendor_components/datatable/datatables.min.js') }}"></script>
+<script src="{{ asset('backend/js/pages/data-table.js') }}"></script>
+
 <script src="{{ asset('../assets/vendor_components/select2/dist/js/select2.full.js') }}"></script>
 
 <!-- CDEditor -->

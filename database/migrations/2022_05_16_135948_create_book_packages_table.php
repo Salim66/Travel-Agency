@@ -24,6 +24,9 @@ return new class extends Migration
             $table->string('child')->nullable();
             $table->string('date');
             $table->string('message')->nullable();
+            $table->string('adult_cost')->nullable();
+            $table->string('child_cost')->nullable();
+            $table->string('total_cost')->nullable();
             $table->integer('status')->default(0);
             $table->timestamps();
         });

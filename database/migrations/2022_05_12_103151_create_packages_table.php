@@ -25,7 +25,8 @@ return new class extends Migration
             $table->string('package_title_en');
             $table->string('package_title_ar');
             $table->string('package_duration');
-            $table->string('package_amount');
+            $table->string('package_amount_adult');
+            $table->string('package_amount_child')->nullable();
             $table->string('package_group_size')->nullable();
             $table->string('package_tour_guide')->nullable();
             $table->string('package_rating')->nullable();

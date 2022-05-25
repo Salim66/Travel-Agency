@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    @php
+        $seo = \App\Models\Seo::findOrFail(1);
+    @endphp
   <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{{ asset('backend') }}/images/favicon.ico">
+    <link rel="icon" href="{{ URL::to($seo->favicon) }}">
 
-    <title>Sunny Admin - Log in </title>
+    <title>{{ $seo->meta_title }} - Log in </title>
   
 	<!-- Vendors Style-->
 	<link rel="stylesheet" href="{{ asset('backend') }}/css/vendors_css.css">

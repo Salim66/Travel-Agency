@@ -49,8 +49,12 @@
                                 <td>{{ $package->package_duration }}</td>
                             </tr>
                             <tr>
-                                <td>Package Amount</td>
-                                <td>{{ $package->package_amount }} $</td>
+                                <td>Package Amount Adult</td>
+                                <td>{{ $package->package_amount_adult }} $</td>
+                            </tr>
+                            <tr>
+                                <td>Package Amount Child</td>
+                                <td>{{ $package->package_amount_child }} $</td>
                             </tr>
                             <tr>
                                 <td>Package Group Size</td>

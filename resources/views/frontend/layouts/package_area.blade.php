@@ -49,10 +49,16 @@
                             <div class="p-card-info">
                                 @if(session()->get('language') == 'arabic')
                                 <span>من عند</span>
-                                <h6>${{ $data->package_amount }} <span>لكل شخص</span></h6>
+                                <h6 class="package-h-3">${{ $data->package_amount_adult }} <span><small>شخص بالغ</small></span></h6>
+                                @if($data->package_amount_child != null)
+                                <h6>${{ $data->package_amount_child }} <span><small>لكل طفل</small></span></h6>
+                                @endif
                                 @else
                                 <span>From</span>
-                                <h6>${{ $data->package_amount }} <span>Per Person</span></h6>
+                                <h6 class="package-h-1">${{ $data->package_amount_adult }} <span><small>Adult Person</small></span></h6><br>
+                                @if($data->package_amount_child != null)
+                                <h6 class="package-h-2">${{ $data->package_amount_child }} <span><small>Per Child</small></span></h6>
+                                @endif
                                 @endif
                             </div>
                         </div>

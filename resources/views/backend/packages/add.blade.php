@@ -17,7 +17,7 @@
                        </div>
                        <!-- /.box-header -->
                        <div class="box-body">
-                           <div class="table-responsive">
+                           <div>
                                <form action="{{ route('package.store') }}" method="POST" enctype="multipart/form-data">
                                @csrf
                                     <div class="row">
@@ -117,18 +117,29 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
-                                                <h5>Package Amount <span class="text-danger">*</span></h5>
+                                                <h5>Package Amount <span class="text-danger">*</span><small>( For Adult )</small></h5>
                                                 <div class="controls">
-                                                    <input type="text" name="package_amount" class="form-control">
-                                                    @error('package_amount')
+                                                    <input type="text" name="package_amount_adult" class="form-control">
+                                                    @error('package_amount_adult')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <h5>Package Amount <small>( For Child )</small></h5>
+                                                <div class="controls">
+                                                    <input type="text" name="package_amount_child" class="form-control">
+                                                    @error('package_amount_child')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <h5>Package Group Size <span class="text-danger"></span></h5>
                                                 <div class="controls">
@@ -136,7 +147,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <h5>Package Tour Guide <span class="text-danger"></span></h5>
                                                 <div class="controls">

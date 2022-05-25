@@ -42,7 +42,7 @@ class PackageController extends Controller
             'package_title_en' => 'required',
             'package_title_ar' => 'required',
             'package_duration' => 'required',
-            'package_amount' => 'required',
+            'package_amount_adult' => 'required',
             'package_image' => 'required'
         ]);
 
@@ -85,7 +85,8 @@ class PackageController extends Controller
             'package_title_ar' => $request->package_title_ar,
             'package_title_slug' => $this->getSlug($request->package_title_en),
             'package_duration' => $request->package_duration,
-            'package_amount' => $request->package_amount,
+            'package_amount_adult' => $request->package_amount_adult,
+            'package_amount_child' => $request->package_amount_child,
             'package_group_size' => $request->package_group_size,
             'package_tour_guide' => $request->package_tour_guide,
             'package_rating' => $request->package_rating,
@@ -149,7 +150,7 @@ class PackageController extends Controller
                 'package_title_en' => 'required',
                 'package_title_ar' => 'required',
                 'package_duration' => 'required',
-                'package_amount' => 'required'
+                'package_amount_adult' => 'required'
             ]);
 
             $save_url_i = '';
@@ -206,7 +207,8 @@ class PackageController extends Controller
              $data->package_title_ar = $request->package_title_ar;
              $data->package_title_slug = $this->getSlug($request->package_title_en);
              $data->package_duration = $request->package_duration;
-             $data->package_amount = $request->package_amount;
+             $data->package_amount_adult = $request->package_amount_adult;
+             $data->package_amount_child = $request->package_amount_child;
              $data->package_group_size = $request->package_group_size;
              $data->package_tour_guide = $request->package_tour_guide;
              $data->package_rating = $request->package_rating;

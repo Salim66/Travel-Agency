@@ -475,12 +475,24 @@
                                 <div class="widget-title text-center d-flex justify-content-between">
                                     @if(session()->get('language') == 'arabic')
                                     <h4>احجز هذه الجولة</h4>
-                                    <h3 class="widget-lavel">${{ $data->package_amount }} <span>للشخص الواحد</span></h3>
+                                    <div>
+                                        <h3 class="widget-lavel"><small>${{ $data->package_amount_adult }} <span>شخص بالغ</span></small></h3>
+                                        @if($data->package_amount_child != null)
+                                        <h3 class="widget-lavel book-price-3"><small>${{ $data->package_amount_child }} <span>لكل طفل</span></small></h3>
+                                        @endif
+                                    </div>
                                     @else
                                     <h4>Book This Tour</h4>
-                                    <h3 class="widget-lavel">${{ $data->package_amount }} <span>Per Person</span></h3>
+                                    <div>
+                                        <h3 class="widget-lavel book-price-1"><small>${{ $data->package_amount_adult }} <span>Adult Person</span></small></h3><br>
+                                        @if($data->package_amount_child != null)
+                                        <h3 class="widget-lavel book-price-2"><small>${{ $data->package_amount_child }} <span>Per Child</span></small></h3>
+                                        @endif
+                                    </div>
                                     @endif
                                 </div>
+                                <input type="hidden"class="input_adult_package_amount" value="{{ $data->package_amount_adult }}">
+                                <input type="hidden" class="input_child_package_amount" value="{{ $data->package_amount_child }}">
                                 <div class="widget-body">
                                     <form action="{{ route('package.book.form') }}" method="post" id="booking-form">
                                         @csrf
@@ -510,7 +522,7 @@
                                                 <div class="col-sm-6">
                                                     <div class="custom-input-group">
                                                         <i class="bi bi-chevron-down"></i>
-                                                        <select name="adult" id="truist-adult">
+                                                        <select name="adult" id="truist-adult" class="select_adult_person">
                                                             <option selected disabled>Adult</option>
                                                             <option value="1"> 1</option>
                                                             <option value="2"> 2</option>
@@ -531,7 +543,7 @@
                                                 <div class="col-sm-6">
                                                     <div class="custom-input-group">
                                                         <i class="bi bi-chevron-down"></i>
-                                                        <select name="child" id="tourist-child">
+                                                        <select name="child" id="tourist-child" class="select_child_person">
                                                             <option selected disabled>Child</option>
                                                             <option value="1"> 1</option>
                                                             <option value="2">2</option>
@@ -539,6 +551,18 @@
                                                             <option value="4"> 4</option>
                                                             <option value="5"> 5</option>
                                                         </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="custom-input-group">
+                                                        <input name="adult_cost" type="number" placeholder="Adult Total Amount" class="push_input_adult_amount" readonly />
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="custom-input-group">
+                                                        <input name="child_cost" type="number" placeholder="Child Total Amount" class="push_input_child_amount" readonly />
                                                     </div>
                                                 </div>
                                             </div>
@@ -551,6 +575,10 @@
                                             </div>
                                             <div class="custom-input-group">
                                                 <textarea name="message" cols="20" rows="7" placeholder="Your message"></textarea>
+                                            </div>
+                                            <div class="custom-input-group">
+                                                <h3>Total Cost: <span class="total_cost"></span></h3>
+                                                <input type="hidden" name="total_cost" class="total_package_cost">
                                             </div>
                                             <div class="custom-input-group">
                                                 <div class="submite-btn">
@@ -638,6 +666,42 @@
         @include('frontend.layouts.footer')
 
         @include('frontend.layouts.partials.scripts')
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.select_adult_person').change(function(){
+                    let adult_val = $(this).val();
+                    let package_amount_adult = $('.input_adult_package_amount').val();
+                    let adult_total_amount = adult_val * package_amount_adult;
+                    $('.push_input_adult_amount').val(adult_total_amount);
+
+                    totalCost();
+                });
+                $('.select_child_person').change(function(){
+                    let child_val = $(this).val();
+                    let package_amount_child = $('.input_child_package_amount').val();
+                    let adult_total_amount = child_val * package_amount_child;
+                    $('.push_input_child_amount').val(adult_total_amount);
+
+                    totalCost();
+                });
+
+                totalCost();
+                function totalCost(){
+                    let adult = $('.push_input_adult_amount').val();
+                    let child = $('.push_input_child_amount').val();
+
+                    let total = 0;
+                    if(adult && child){
+                        total = parseInt(adult) + parseInt(child);
+                    }else {
+                        total = adult;
+                    }
+                    $('.total_cost').html(total + '$');
+                    $('.total_package_cost').val(total);
+                }
+            });
+        </script>
     </body>
 
 </html>

@@ -89,7 +89,19 @@ class SettingsController extends Controller
             'date' => 'required',
         ]);
 
-        BookPackage::create($request->all());
+        BookPackage::create([
+            'package_id' => $request->package_id,
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'adult' => $request->adult,
+            'child' => $request->child,
+            'date' => $request->date,
+            'message' => $request->message,
+            'adult_cost' => $request->adult_cost,
+            'child_cost' => $request->child_cost,
+            'total_cost' => $request->total_cost,
+        ]);
 
         $notification = [
             'message' => 'Your Package Book Successfully',
