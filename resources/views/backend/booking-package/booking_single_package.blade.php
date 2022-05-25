@@ -45,6 +45,18 @@
                                 <td>{{ $data->child }}</td>
                             </tr>
                             <tr>
+                                <td>Person Total Cost</td>
+                                <td>${{ $data->adult_cost }}</td>
+                            </tr>
+                            <tr>
+                                <td>Child Total Cost</td>
+                                <td>${{ $data->child_cost }}</td>
+                            </tr>
+                            <tr>
+                                <td>Total Package Cost</td>
+                                <td>${{ $data->total_cost }}</td>
+                            </tr>
+                            <tr>
                                 <td>Date</td>
                                 <td>{{ $data->date }}</td>
                             </tr>
@@ -88,8 +100,12 @@
                                 <td>{{ $data->packages->package_duration }}</td>
                             </tr>
                             <tr>
-                                <td>Package Amount</td>
-                                <td>{{ $data->packages->package_amount }} $</td>
+                                <td>Package Adult Amount</td>
+                                <td>${{ $data->packages->package_amount_adult }}</td>
+                            </tr>
+                            <tr>
+                                <td>Package Child Amount</td>
+                                <td>${{ $data->packages->package_amount_child }}</td>
                             </tr>
                             <tr>
                                 <td>Package Group Size</td>

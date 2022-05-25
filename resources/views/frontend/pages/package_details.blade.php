@@ -568,7 +568,7 @@
                                             </div>
                                             <div class="custom-input-group">
                                                 <i class="bi bi-calendar3"></i>
-                                                <input placeholder="Select your date" type="text" name="date" id="datepicker2" value="" class="calendar" />
+                                                <input placeholder="Select your date" type="text" name="date" id="datepicker2" class="calendar" />
                                                 @error('date')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror

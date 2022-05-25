@@ -15,6 +15,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Policy;
 use App\Models\Subscriber;
 use App\Models\Terms;
+use App\Notifications\PackageBookingNotification;
+use Illuminate\Support\Facades\Notification;
 
 class SettingsController extends Controller
 {
@@ -89,7 +91,7 @@ class SettingsController extends Controller
             'date' => 'required',
         ]);
 
-        BookPackage::create([
+        $data = BookPackage::create([
             'package_id' => $request->package_id,
             'name' => $request->name,
             'email' => $request->email,
@@ -102,6 +104,10 @@ class SettingsController extends Controller
             'child_cost' => $request->child_cost,
             'total_cost' => $request->total_cost,
         ]);
+
+
+        Notification::route('mail',$request->email)
+                ->notify(new PackageBookingNotification($data));
 
         $notification = [
             'message' => 'Your Package Book Successfully',

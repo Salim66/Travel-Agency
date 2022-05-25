@@ -18,7 +18,7 @@
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="table-responsive">
-                            <table id="example1" class="table table-bordered table-striped">
+                            <table id="example" class="table table-bordered table-striped table-hover display nowrap margin-top-10 w-p100 table-responsive">
                                 <thead>
                                     <tr>
                                         <th>#</th>
